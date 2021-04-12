@@ -1,0 +1,2562 @@
+
+main:     формат файла elf64-x86-64
+
+
+Дизассемблирование раздела .init:
+
+0000000000001000 <_init>:
+    1000:	f3 0f 1e fa          	endbr64 
+    1004:	48 83 ec 08          	sub    $0x8,%rsp
+    1008:	48 8b 05 d9 3f 00 00 	mov    0x3fd9(%rip),%rax        # 4fe8 <__gmon_start__>
+    100f:	48 85 c0             	test   %rax,%rax
+    1012:	74 02                	je     1016 <_init+0x16>
+    1014:	ff d0                	call   *%rax
+    1016:	48 83 c4 08          	add    $0x8,%rsp
+    101a:	c3                   	ret    
+
+Дизассемблирование раздела .plt:
+
+0000000000001020 <free@plt-0x10>:
+    1020:	ff 35 e2 3f 00 00    	push   0x3fe2(%rip)        # 5008 <_GLOBAL_OFFSET_TABLE_+0x8>
+    1026:	ff 25 e4 3f 00 00    	jmp    *0x3fe4(%rip)        # 5010 <_GLOBAL_OFFSET_TABLE_+0x10>
+    102c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000001030 <free@plt>:
+    1030:	ff 25 e2 3f 00 00    	jmp    *0x3fe2(%rip)        # 5018 <free@GLIBC_2.2.5>
+    1036:	68 00 00 00 00       	push   $0x0
+    103b:	e9 e0 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001040 <strcpy@plt>:
+    1040:	ff 25 da 3f 00 00    	jmp    *0x3fda(%rip)        # 5020 <strcpy@GLIBC_2.2.5>
+    1046:	68 01 00 00 00       	push   $0x1
+    104b:	e9 d0 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001050 <fread@plt>:
+    1050:	ff 25 d2 3f 00 00    	jmp    *0x3fd2(%rip)        # 5028 <fread@GLIBC_2.2.5>
+    1056:	68 02 00 00 00       	push   $0x2
+    105b:	e9 c0 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001060 <fclose@plt>:
+    1060:	ff 25 ca 3f 00 00    	jmp    *0x3fca(%rip)        # 5030 <fclose@GLIBC_2.2.5>
+    1066:	68 03 00 00 00       	push   $0x3
+    106b:	e9 b0 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001070 <strlen@plt>:
+    1070:	ff 25 c2 3f 00 00    	jmp    *0x3fc2(%rip)        # 5038 <strlen@GLIBC_2.2.5>
+    1076:	68 04 00 00 00       	push   $0x4
+    107b:	e9 a0 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001080 <__stack_chk_fail@plt>:
+    1080:	ff 25 ba 3f 00 00    	jmp    *0x3fba(%rip)        # 5040 <__stack_chk_fail@GLIBC_2.4>
+    1086:	68 05 00 00 00       	push   $0x5
+    108b:	e9 90 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001090 <strchr@plt>:
+    1090:	ff 25 b2 3f 00 00    	jmp    *0x3fb2(%rip)        # 5048 <strchr@GLIBC_2.2.5>
+    1096:	68 06 00 00 00       	push   $0x6
+    109b:	e9 80 ff ff ff       	jmp    1020 <_init+0x20>
+
+00000000000010a0 <isspace@plt>:
+    10a0:	ff 25 aa 3f 00 00    	jmp    *0x3faa(%rip)        # 5050 <isspace@GLIBC_2.2.5>
+    10a6:	68 07 00 00 00       	push   $0x7
+    10ab:	e9 70 ff ff ff       	jmp    1020 <_init+0x20>
+
+00000000000010b0 <fputc@plt>:
+    10b0:	ff 25 a2 3f 00 00    	jmp    *0x3fa2(%rip)        # 5058 <fputc@GLIBC_2.2.5>
+    10b6:	68 08 00 00 00       	push   $0x8
+    10bb:	e9 60 ff ff ff       	jmp    1020 <_init+0x20>
+
+00000000000010c0 <calloc@plt>:
+    10c0:	ff 25 9a 3f 00 00    	jmp    *0x3f9a(%rip)        # 5060 <calloc@GLIBC_2.2.5>
+    10c6:	68 09 00 00 00       	push   $0x9
+    10cb:	e9 50 ff ff ff       	jmp    1020 <_init+0x20>
+
+00000000000010d0 <strcmp@plt>:
+    10d0:	ff 25 92 3f 00 00    	jmp    *0x3f92(%rip)        # 5068 <strcmp@GLIBC_2.2.5>
+    10d6:	68 0a 00 00 00       	push   $0xa
+    10db:	e9 40 ff ff ff       	jmp    1020 <_init+0x20>
+
+00000000000010e0 <fprintf@plt>:
+    10e0:	ff 25 8a 3f 00 00    	jmp    *0x3f8a(%rip)        # 5070 <fprintf@GLIBC_2.2.5>
+    10e6:	68 0b 00 00 00       	push   $0xb
+    10eb:	e9 30 ff ff ff       	jmp    1020 <_init+0x20>
+
+00000000000010f0 <stat@plt>:
+    10f0:	ff 25 82 3f 00 00    	jmp    *0x3f82(%rip)        # 5078 <stat@GLIBC_2.33>
+    10f6:	68 0c 00 00 00       	push   $0xc
+    10fb:	e9 20 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001100 <tolower@plt>:
+    1100:	ff 25 7a 3f 00 00    	jmp    *0x3f7a(%rip)        # 5080 <tolower@GLIBC_2.2.5>
+    1106:	68 0d 00 00 00       	push   $0xd
+    110b:	e9 10 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001110 <strpbrk@plt>:
+    1110:	ff 25 72 3f 00 00    	jmp    *0x3f72(%rip)        # 5088 <strpbrk@GLIBC_2.2.5>
+    1116:	68 0e 00 00 00       	push   $0xe
+    111b:	e9 00 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001120 <realloc@plt>:
+    1120:	ff 25 6a 3f 00 00    	jmp    *0x3f6a(%rip)        # 5090 <realloc@GLIBC_2.2.5>
+    1126:	68 0f 00 00 00       	push   $0xf
+    112b:	e9 f0 fe ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001130 <fopen@plt>:
+    1130:	ff 25 62 3f 00 00    	jmp    *0x3f62(%rip)        # 5098 <fopen@GLIBC_2.2.5>
+    1136:	68 10 00 00 00       	push   $0x10
+    113b:	e9 e0 fe ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001140 <strtok@plt>:
+    1140:	ff 25 5a 3f 00 00    	jmp    *0x3f5a(%rip)        # 50a0 <strtok@GLIBC_2.2.5>
+    1146:	68 11 00 00 00       	push   $0x11
+    114b:	e9 d0 fe ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001150 <fwrite@plt>:
+    1150:	ff 25 52 3f 00 00    	jmp    *0x3f52(%rip)        # 50a8 <fwrite@GLIBC_2.2.5>
+    1156:	68 12 00 00 00       	push   $0x12
+    115b:	e9 c0 fe ff ff       	jmp    1020 <_init+0x20>
+
+Дизассемблирование раздела .text:
+
+0000000000001160 <_start>:
+    1160:	f3 0f 1e fa          	endbr64 
+    1164:	31 ed                	xor    %ebp,%ebp
+    1166:	49 89 d1             	mov    %rdx,%r9
+    1169:	5e                   	pop    %rsi
+    116a:	48 89 e2             	mov    %rsp,%rdx
+    116d:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+    1171:	50                   	push   %rax
+    1172:	54                   	push   %rsp
+    1173:	4c 8d 05 66 18 00 00 	lea    0x1866(%rip),%r8        # 29e0 <__libc_csu_fini>
+    117a:	48 8d 0d ef 17 00 00 	lea    0x17ef(%rip),%rcx        # 2970 <__libc_csu_init>
+    1181:	48 8d 3d ad 03 00 00 	lea    0x3ad(%rip),%rdi        # 1535 <main>
+    1188:	ff 15 52 3e 00 00    	call   *0x3e52(%rip)        # 4fe0 <__libc_start_main@GLIBC_2.2.5>
+    118e:	f4                   	hlt    
+    118f:	90                   	nop
+
+0000000000001190 <deregister_tm_clones>:
+    1190:	48 8d 3d 41 3f 00 00 	lea    0x3f41(%rip),%rdi        # 50d8 <__TMC_END__>
+    1197:	48 8d 05 3a 3f 00 00 	lea    0x3f3a(%rip),%rax        # 50d8 <__TMC_END__>
+    119e:	48 39 f8             	cmp    %rdi,%rax
+    11a1:	74 15                	je     11b8 <deregister_tm_clones+0x28>
+    11a3:	48 8b 05 2e 3e 00 00 	mov    0x3e2e(%rip),%rax        # 4fd8 <_ITM_deregisterTMCloneTable>
+    11aa:	48 85 c0             	test   %rax,%rax
+    11ad:	74 09                	je     11b8 <deregister_tm_clones+0x28>
+    11af:	ff e0                	jmp    *%rax
+    11b1:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    11b8:	c3                   	ret    
+    11b9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+00000000000011c0 <register_tm_clones>:
+    11c0:	48 8d 3d 11 3f 00 00 	lea    0x3f11(%rip),%rdi        # 50d8 <__TMC_END__>
+    11c7:	48 8d 35 0a 3f 00 00 	lea    0x3f0a(%rip),%rsi        # 50d8 <__TMC_END__>
+    11ce:	48 29 fe             	sub    %rdi,%rsi
+    11d1:	48 89 f0             	mov    %rsi,%rax
+    11d4:	48 c1 ee 3f          	shr    $0x3f,%rsi
+    11d8:	48 c1 f8 03          	sar    $0x3,%rax
+    11dc:	48 01 c6             	add    %rax,%rsi
+    11df:	48 d1 fe             	sar    %rsi
+    11e2:	74 14                	je     11f8 <register_tm_clones+0x38>
+    11e4:	48 8b 05 05 3e 00 00 	mov    0x3e05(%rip),%rax        # 4ff0 <_ITM_registerTMCloneTable>
+    11eb:	48 85 c0             	test   %rax,%rax
+    11ee:	74 08                	je     11f8 <register_tm_clones+0x38>
+    11f0:	ff e0                	jmp    *%rax
+    11f2:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+    11f8:	c3                   	ret    
+    11f9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+0000000000001200 <__do_global_dtors_aux>:
+    1200:	f3 0f 1e fa          	endbr64 
+    1204:	80 3d cd 3e 00 00 00 	cmpb   $0x0,0x3ecd(%rip)        # 50d8 <__TMC_END__>
+    120b:	75 33                	jne    1240 <__do_global_dtors_aux+0x40>
+    120d:	55                   	push   %rbp
+    120e:	48 83 3d e2 3d 00 00 	cmpq   $0x0,0x3de2(%rip)        # 4ff8 <__cxa_finalize@GLIBC_2.2.5>
+    1215:	00 
+    1216:	48 89 e5             	mov    %rsp,%rbp
+    1219:	74 0d                	je     1228 <__do_global_dtors_aux+0x28>
+    121b:	48 8b 3d 96 3e 00 00 	mov    0x3e96(%rip),%rdi        # 50b8 <__dso_handle>
+    1222:	ff 15 d0 3d 00 00    	call   *0x3dd0(%rip)        # 4ff8 <__cxa_finalize@GLIBC_2.2.5>
+    1228:	e8 63 ff ff ff       	call   1190 <deregister_tm_clones>
+    122d:	c6 05 a4 3e 00 00 01 	movb   $0x1,0x3ea4(%rip)        # 50d8 <__TMC_END__>
+    1234:	5d                   	pop    %rbp
+    1235:	c3                   	ret    
+    1236:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    123d:	00 00 00 
+    1240:	c3                   	ret    
+    1241:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    1248:	00 00 00 00 
+    124c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000001250 <frame_dummy>:
+    1250:	f3 0f 1e fa          	endbr64 
+    1254:	e9 67 ff ff ff       	jmp    11c0 <register_tm_clones>
+
+0000000000001259 <_Z7getHashPcm>:
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+
+size_t getHash(char* value, size_t module)
+{
+    1259:	55                   	push   %rbp
+    125a:	48 89 e5             	mov    %rsp,%rbp
+    125d:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    1261:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+    return value[0] % module;
+    1265:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1269:	0f b6 00             	movzbl (%rax),%eax
+    126c:	48 0f be c0          	movsbq %al,%rax
+    1270:	ba 00 00 00 00       	mov    $0x0,%edx
+    1275:	48 f7 75 f0          	divq   -0x10(%rbp)
+    1279:	48 89 d0             	mov    %rdx,%rax
+}
+    127c:	5d                   	pop    %rbp
+    127d:	c3                   	ret    
+
+000000000000127e <_Z28OH_YEAH_MA_SENPAI_GO_ROR_ME_mm>:
+
+size_t OH_YEAH_MA_SENPAI_GO_ROR_ME_(size_t rorable_number, size_t amount_rors)
+{
+    127e:	55                   	push   %rbp
+    127f:	48 89 e5             	mov    %rsp,%rbp
+    1282:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    1286:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+    return (rorable_number >> amount_rors) | (rorable_number << (sizeof(size_t) * 8 - amount_rors));
+    128a:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    128e:	89 c2                	mov    %eax,%edx
+    1290:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1294:	89 d1                	mov    %edx,%ecx
+    1296:	48 d3 c8             	ror    %cl,%rax
+}
+    1299:	5d                   	pop    %rbp
+    129a:	c3                   	ret    
+
+000000000000129b <_Z15getConstantHashPcm>:
+
+size_t getConstantHash(char* value, size_t module)
+{
+    129b:	55                   	push   %rbp
+    129c:	48 89 e5             	mov    %rsp,%rbp
+    129f:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    12a3:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+    return 21;
+    12a7:	b8 15 00 00 00       	mov    $0x15,%eax
+}
+    12ac:	5d                   	pop    %rbp
+    12ad:	c3                   	ret    
+
+00000000000012ae <_Z23getLengthDependenceHashPcm>:
+
+size_t getLengthDependenceHash(char* value, size_t module)
+{
+    12ae:	55                   	push   %rbp
+    12af:	48 89 e5             	mov    %rsp,%rbp
+    12b2:	48 83 ec 10          	sub    $0x10,%rsp
+    12b6:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    12ba:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+    return strlen(value) % module;
+    12be:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    12c2:	48 89 c7             	mov    %rax,%rdi
+    12c5:	e8 a6 fd ff ff       	call   1070 <strlen@plt>
+    12ca:	ba 00 00 00 00       	mov    $0x0,%edx
+    12cf:	48 f7 75 f0          	divq   -0x10(%rbp)
+    12d3:	48 89 d0             	mov    %rdx,%rax
+}
+    12d6:	c9                   	leave  
+    12d7:	c3                   	ret    
+
+00000000000012d8 <_Z28getFirstSymbolDependenceHashPcm>:
+
+size_t getFirstSymbolDependenceHash(char* value, size_t module)
+{   
+    12d8:	55                   	push   %rbp
+    12d9:	48 89 e5             	mov    %rsp,%rbp
+    12dc:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    12e0:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+    return value[0] % module;
+    12e4:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    12e8:	0f b6 00             	movzbl (%rax),%eax
+    12eb:	48 0f be c0          	movsbq %al,%rax
+    12ef:	ba 00 00 00 00       	mov    $0x0,%edx
+    12f4:	48 f7 75 f0          	divq   -0x10(%rbp)
+    12f8:	48 89 d0             	mov    %rdx,%rax
+}
+    12fb:	5d                   	pop    %rbp
+    12fc:	c3                   	ret    
+
+00000000000012fd <_Z29getSumASCIICodeDependenceHashPcm>:
+
+size_t getSumASCIICodeDependenceHash(char* value, size_t module)
+{   
+    12fd:	55                   	push   %rbp
+    12fe:	48 89 e5             	mov    %rsp,%rbp
+    1301:	53                   	push   %rbx
+    1302:	48 83 ec 18          	sub    $0x18,%rsp
+    1306:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    130a:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    if (*value == '\0') return 0;
+    130e:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1312:	0f b6 00             	movzbl (%rax),%eax
+    1315:	84 c0                	test   %al,%al
+    1317:	75 07                	jne    1320 <_Z29getSumASCIICodeDependenceHashPcm+0x23>
+    1319:	b8 00 00 00 00       	mov    $0x0,%eax
+    131e:	eb 31                	jmp    1351 <_Z29getSumASCIICodeDependenceHashPcm+0x54>
+
+    return ((*value) + getSumASCIICodeDependenceHash(value + 1, module)) % module;
+    1320:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1324:	0f b6 00             	movzbl (%rax),%eax
+    1327:	48 0f be d8          	movsbq %al,%rbx
+    132b:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    132f:	48 8d 50 01          	lea    0x1(%rax),%rdx
+    1333:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1337:	48 89 c6             	mov    %rax,%rsi
+    133a:	48 89 d7             	mov    %rdx,%rdi
+    133d:	e8 bb ff ff ff       	call   12fd <_Z29getSumASCIICodeDependenceHashPcm>
+    1342:	48 01 d8             	add    %rbx,%rax
+    1345:	ba 00 00 00 00       	mov    $0x0,%edx
+    134a:	48 f7 75 e0          	divq   -0x20(%rbp)
+    134e:	48 89 d0             	mov    %rdx,%rax
+}
+    1351:	48 8b 5d f8          	mov    -0x8(%rbp),%rbx
+    1355:	c9                   	leave  
+    1356:	c3                   	ret    
+
+0000000000001357 <_Z26getNormalButNotTheBestHashPcm>:
+
+size_t getNormalButNotTheBestHash(char* value, size_t module)
+{
+    1357:	55                   	push   %rbp
+    1358:	48 89 e5             	mov    %rsp,%rbp
+    135b:	48 83 ec 20          	sub    $0x20,%rsp
+    135f:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    1363:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    size_t hash = 0;
+    1367:	48 c7 45 f0 00 00 00 	movq   $0x0,-0x10(%rbp)
+    136e:	00 
+    for (size_t pos = 0; value[pos] != '\0'; ++pos)
+    136f:	48 c7 45 f8 00 00 00 	movq   $0x0,-0x8(%rbp)
+    1376:	00 
+    1377:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+    137b:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    137f:	48 01 d0             	add    %rdx,%rax
+    1382:	0f b6 00             	movzbl (%rax),%eax
+    1385:	84 c0                	test   %al,%al
+    1387:	74 34                	je     13bd <_Z26getNormalButNotTheBestHashPcm+0x66>
+    {
+        hash = OH_YEAH_MA_SENPAI_GO_ROR_ME_(hash, 1) ^ value[pos];
+    1389:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    138d:	be 01 00 00 00       	mov    $0x1,%esi
+    1392:	48 89 c7             	mov    %rax,%rdi
+    1395:	e8 e4 fe ff ff       	call   127e <_Z28OH_YEAH_MA_SENPAI_GO_ROR_ME_mm>
+    139a:	48 89 c2             	mov    %rax,%rdx
+    139d:	48 8b 4d e8          	mov    -0x18(%rbp),%rcx
+    13a1:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    13a5:	48 01 c8             	add    %rcx,%rax
+    13a8:	0f b6 00             	movzbl (%rax),%eax
+    13ab:	48 0f be c0          	movsbq %al,%rax
+    13af:	48 31 d0             	xor    %rdx,%rax
+    13b2:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+    for (size_t pos = 0; value[pos] != '\0'; ++pos)
+    13b6:	48 83 45 f8 01       	addq   $0x1,-0x8(%rbp)
+    13bb:	eb ba                	jmp    1377 <_Z26getNormalButNotTheBestHashPcm+0x20>
+    }
+    return hash % module;
+    13bd:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    13c1:	ba 00 00 00 00       	mov    $0x0,%edx
+    13c6:	48 f7 75 e0          	divq   -0x20(%rbp)
+    13ca:	48 89 d0             	mov    %rdx,%rax
+}
+    13cd:	c9                   	leave  
+    13ce:	c3                   	ret    
+
+00000000000013cf <_Z5fnv64Pcm>:
+
+size_t fnv64(char *p, size_t module) {
+    13cf:	55                   	push   %rbp
+    13d0:	48 89 e5             	mov    %rsp,%rbp
+    13d3:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+    13d7:	48 89 75 d0          	mov    %rsi,-0x30(%rbp)
+    size_t hash = 0;
+    13db:	48 c7 45 e8 00 00 00 	movq   $0x0,-0x18(%rbp)
+    13e2:	00 
+    const size_t fnv_prime = 1099511628211;
+    13e3:	48 b8 b3 01 00 00 00 	movabs $0x100000001b3,%rax
+    13ea:	01 00 00 
+    13ed:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    for (size_t i = 0; p[i] != 0; i++) {
+    13f1:	48 c7 45 f0 00 00 00 	movq   $0x0,-0x10(%rbp)
+    13f8:	00 
+    13f9:	48 8b 55 d8          	mov    -0x28(%rbp),%rdx
+    13fd:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    1401:	48 01 d0             	add    %rdx,%rax
+    1404:	0f b6 00             	movzbl (%rax),%eax
+    1407:	84 c0                	test   %al,%al
+    1409:	74 33                	je     143e <_Z5fnv64Pcm+0x6f>
+        hash *= fnv_prime;
+    140b:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    140f:	48 ba b3 01 00 00 00 	movabs $0x100000001b3,%rdx
+    1416:	01 00 00 
+    1419:	48 0f af c2          	imul   %rdx,%rax
+    141d:	48 89 45 e8          	mov    %rax,-0x18(%rbp)
+        hash ^= (p[i]);
+    1421:	48 8b 55 d8          	mov    -0x28(%rbp),%rdx
+    1425:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    1429:	48 01 d0             	add    %rdx,%rax
+    142c:	0f b6 00             	movzbl (%rax),%eax
+    142f:	48 0f be c0          	movsbq %al,%rax
+    1433:	48 31 45 e8          	xor    %rax,-0x18(%rbp)
+    for (size_t i = 0; p[i] != 0; i++) {
+    1437:	48 83 45 f0 01       	addq   $0x1,-0x10(%rbp)
+    143c:	eb bb                	jmp    13f9 <_Z5fnv64Pcm+0x2a>
+    }
+    return hash % module;
+    143e:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1442:	ba 00 00 00 00       	mov    $0x0,%edx
+    1447:	48 f7 75 d0          	divq   -0x30(%rbp)
+    144b:	48 89 d0             	mov    %rdx,%rax
+}
+    144e:	5d                   	pop    %rbp
+    144f:	c3                   	ret    
+
+0000000000001450 <_Z9HolyPoly_Pcm>:
+
+size_t HolyPoly_(char* value, size_t module)
+{
+    1450:	55                   	push   %rbp
+    1451:	48 89 e5             	mov    %rsp,%rbp
+    1454:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+    1458:	48 89 75 d0          	mov    %rsi,-0x30(%rbp)
+    size_t prime_number = 7988587;
+    145c:	48 c7 45 f8 6b e5 79 	movq   $0x79e56b,-0x8(%rbp)
+    1463:	00 
+    size_t hash = *value;
+    1464:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    1468:	0f b6 00             	movzbl (%rax),%eax
+    146b:	48 0f be c0          	movsbq %al,%rax
+    146f:	48 89 45 e8          	mov    %rax,-0x18(%rbp)
+    size_t accumulator = 1;
+    1473:	48 c7 45 f0 01 00 00 	movq   $0x1,-0x10(%rbp)
+    147a:	00 
+
+    for (value; *value != '\0'; ++value)
+    147b:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    147f:	0f b6 00             	movzbl (%rax),%eax
+    1482:	84 c0                	test   %al,%al
+    1484:	74 28                	je     14ae <_Z9HolyPoly_Pcm+0x5e>
+    {   
+        hash += (*value) * accumulator;
+    1486:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    148a:	0f b6 00             	movzbl (%rax),%eax
+    148d:	48 0f be c0          	movsbq %al,%rax
+    1491:	48 0f af 45 f0       	imul   -0x10(%rbp),%rax
+    1496:	48 01 45 e8          	add    %rax,-0x18(%rbp)
+
+        accumulator *= prime_number;
+    149a:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    149e:	48 0f af 45 f8       	imul   -0x8(%rbp),%rax
+    14a3:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+    for (value; *value != '\0'; ++value)
+    14a7:	48 83 45 d8 01       	addq   $0x1,-0x28(%rbp)
+    14ac:	eb cd                	jmp    147b <_Z9HolyPoly_Pcm+0x2b>
+    }
+    return hash % module;
+    14ae:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    14b2:	ba 00 00 00 00       	mov    $0x0,%edx
+    14b7:	48 f7 75 d0          	divq   -0x30(%rbp)
+    14bb:	48 89 d0             	mov    %rdx,%rax
+}
+    14be:	5d                   	pop    %rbp
+    14bf:	c3                   	ret    
+
+00000000000014c0 <_Z16writeBucketSizesP10DictionaryP8_IO_FILE>:
+
+void writeBucketSizes(Dictionary* dict, FILE* file)
+{
+    14c0:	55                   	push   %rbp
+    14c1:	48 89 e5             	mov    %rsp,%rbp
+    14c4:	48 83 ec 20          	sub    $0x20,%rsp
+    14c8:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    14cc:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    for (size_t i = 0; i < dict->table->size; ++i)
+    14d0:	48 c7 45 f8 00 00 00 	movq   $0x0,-0x8(%rbp)
+    14d7:	00 
+    14d8:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    14dc:	48 8b 00             	mov    (%rax),%rax
+    14df:	48 8b 40 08          	mov    0x8(%rax),%rax
+    14e3:	48 39 45 f8          	cmp    %rax,-0x8(%rbp)
+    14e7:	73 38                	jae    1521 <_Z16writeBucketSizesP10DictionaryP8_IO_FILE+0x61>
+    {
+        fprintf(file, "%zu,", dict->table->buckets[i].size);
+    14e9:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    14ed:	48 8b 00             	mov    (%rax),%rax
+    14f0:	48 8b 10             	mov    (%rax),%rdx
+    14f3:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    14f7:	48 c1 e0 05          	shl    $0x5,%rax
+    14fb:	48 01 d0             	add    %rdx,%rax
+    14fe:	48 8b 50 08          	mov    0x8(%rax),%rdx
+    1502:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1506:	48 8d 35 f7 1a 00 00 	lea    0x1af7(%rip),%rsi        # 3004 <_IO_stdin_used+0x4>
+    150d:	48 89 c7             	mov    %rax,%rdi
+    1510:	b8 00 00 00 00       	mov    $0x0,%eax
+    1515:	e8 c6 fb ff ff       	call   10e0 <fprintf@plt>
+    for (size_t i = 0; i < dict->table->size; ++i)
+    151a:	48 83 45 f8 01       	addq   $0x1,-0x8(%rbp)
+    151f:	eb b7                	jmp    14d8 <_Z16writeBucketSizesP10DictionaryP8_IO_FILE+0x18>
+    }
+    fprintf(file, "\n");
+    1521:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1525:	48 89 c6             	mov    %rax,%rsi
+    1528:	bf 0a 00 00 00       	mov    $0xa,%edi
+    152d:	e8 7e fb ff ff       	call   10b0 <fputc@plt>
+}
+    1532:	90                   	nop
+    1533:	c9                   	leave  
+    1534:	c3                   	ret    
+
+0000000000001535 <main>:
+
+int main()
+{   
+    1535:	55                   	push   %rbp
+    1536:	48 89 e5             	mov    %rsp,%rbp
+    1539:	48 81 ec a0 00 00 00 	sub    $0xa0,%rsp
+    1540:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    1547:	00 00 
+    1549:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    154d:	31 c0                	xor    %eax,%eax
+    Dictionary dict = {};
+    154f:	48 c7 85 60 ff ff ff 	movq   $0x0,-0xa0(%rbp)
+    1556:	00 00 00 00 
+    155a:	48 c7 85 68 ff ff ff 	movq   $0x0,-0x98(%rbp)
+    1561:	00 00 00 00 
+    char input[128];
+
+    // constructDictiosnary(&dict, "res/dict.txt", HolyPoly_);
+
+    translateFile("text.txt", "translated_text.html");
+    1565:	48 8d 35 9d 1a 00 00 	lea    0x1a9d(%rip),%rsi        # 3009 <_IO_stdin_used+0x9>
+    156c:	48 8d 3d ab 1a 00 00 	lea    0x1aab(%rip),%rdi        # 301e <_IO_stdin_used+0x1e>
+    1573:	e8 aa 0d 00 00       	call   2322 <_Z13translateFilePKcS0_>
+    // while (true)
+    // {
+    //     scanf("%s", input);
+    //     translateSentence(&dict, input, stdout);
+    // }
+    return 0;
+    1578:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+    157d:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+    1581:	64 48 2b 14 25 28 00 	sub    %fs:0x28,%rdx
+    1588:	00 00 
+    158a:	74 05                	je     1591 <main+0x5c>
+    158c:	e8 ef fa ff ff       	call   1080 <__stack_chk_fail@plt>
+    1591:	c9                   	leave  
+    1592:	c3                   	ret    
+
+0000000000001593 <_Z15compareElementsP7ElementS0_>:
+static const size_t prime_number = 7988587;
+static const size_t a = 10875133;
+static const size_t b = 20999999;
+
+bool compareElements(elem_t* value_a, elem_t* value_b)
+{
+    1593:	55                   	push   %rbp
+    1594:	48 89 e5             	mov    %rsp,%rbp
+    1597:	48 83 ec 10          	sub    $0x10,%rsp
+    159b:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    159f:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+    return strcmp(value_a->key, value_b->key) == 0;
+    15a3:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    15a7:	48 8b 10             	mov    (%rax),%rdx
+    15aa:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    15ae:	48 8b 00             	mov    (%rax),%rax
+    15b1:	48 89 d6             	mov    %rdx,%rsi
+    15b4:	48 89 c7             	mov    %rax,%rdi
+    15b7:	e8 14 fb ff ff       	call   10d0 <strcmp@plt>
+    15bc:	85 c0                	test   %eax,%eax
+    15be:	0f 94 c0             	sete   %al
+}
+    15c1:	c9                   	leave  
+    15c2:	c3                   	ret    
+
+00000000000015c3 <_Z18constructHashTableP9HashTablemPFmPcmE>:
+
+void constructHashTable(HashTable* table, size_t size, 
+                        size_t (* getHash)(char* value, size_t module))
+{
+    15c3:	55                   	push   %rbp
+    15c4:	48 89 e5             	mov    %rsp,%rbp
+    15c7:	48 83 ec 30          	sub    $0x30,%rsp
+    15cb:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    15cf:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    15d3:	48 89 55 d8          	mov    %rdx,-0x28(%rbp)
+    table->buckets = (Array*)calloc(size, sizeof(Array));
+    15d7:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    15db:	be 20 00 00 00       	mov    $0x20,%esi
+    15e0:	48 89 c7             	mov    %rax,%rdi
+    15e3:	e8 d8 fa ff ff       	call   10c0 <calloc@plt>
+    15e8:	48 89 c2             	mov    %rax,%rdx
+    15eb:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    15ef:	48 89 10             	mov    %rdx,(%rax)
+    table->getHash = getHash;
+    15f2:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    15f6:	48 8b 55 d8          	mov    -0x28(%rbp),%rdx
+    15fa:	48 89 50 18          	mov    %rdx,0x18(%rax)
+    table->size = size;
+    15fe:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1602:	48 8b 55 e0          	mov    -0x20(%rbp),%rdx
+    1606:	48 89 50 08          	mov    %rdx,0x8(%rax)
+    table->amount_elements = 0;
+    160a:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    160e:	48 c7 40 10 00 00 00 	movq   $0x0,0x10(%rax)
+    1615:	00 
+    for (size_t i = 0; i < size; ++i)
+    1616:	48 c7 45 f8 00 00 00 	movq   $0x0,-0x8(%rbp)
+    161d:	00 
+    161e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1622:	48 3b 45 e0          	cmp    -0x20(%rbp),%rax
+    1626:	73 2d                	jae    1655 <_Z18constructHashTableP9HashTablemPFmPcmE+0x92>
+    {
+        constructArray(&table->buckets[i], START_CAPACITY, compareElements);
+    1628:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    162c:	48 8b 10             	mov    (%rax),%rdx
+    162f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1633:	48 c1 e0 05          	shl    $0x5,%rax
+    1637:	48 01 d0             	add    %rdx,%rax
+    163a:	48 8d 15 52 ff ff ff 	lea    -0xae(%rip),%rdx        # 1593 <_Z15compareElementsP7ElementS0_>
+    1641:	be 08 00 00 00       	mov    $0x8,%esi
+    1646:	48 89 c7             	mov    %rax,%rdi
+    1649:	e8 c7 03 00 00       	call   1a15 <_Z14constructArrayP5ArraymPFbP7ElementS2_E>
+    for (size_t i = 0; i < size; ++i)
+    164e:	48 83 45 f8 01       	addq   $0x1,-0x8(%rbp)
+    1653:	eb c9                	jmp    161e <_Z18constructHashTableP9HashTablemPFmPcmE+0x5b>
+    }
+}
+    1655:	90                   	nop
+    1656:	c9                   	leave  
+    1657:	c3                   	ret    
+
+0000000000001658 <_Z17destructHashTableP9HashTable>:
+
+void destructHashTable(HashTable* table)
+{   
+    1658:	55                   	push   %rbp
+    1659:	48 89 e5             	mov    %rsp,%rbp
+    165c:	48 83 ec 20          	sub    $0x20,%rsp
+    1660:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    for (size_t i = 0; i < table->size; ++i)
+    1664:	48 c7 45 f8 00 00 00 	movq   $0x0,-0x8(%rbp)
+    166b:	00 
+    166c:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1670:	48 8b 40 08          	mov    0x8(%rax),%rax
+    1674:	48 39 45 f8          	cmp    %rax,-0x8(%rbp)
+    1678:	73 21                	jae    169b <_Z17destructHashTableP9HashTable+0x43>
+    {
+        destructArray(&table->buckets[i]);
+    167a:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    167e:	48 8b 10             	mov    (%rax),%rdx
+    1681:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1685:	48 c1 e0 05          	shl    $0x5,%rax
+    1689:	48 01 d0             	add    %rdx,%rax
+    168c:	48 89 c7             	mov    %rax,%rdi
+    168f:	e8 aa 04 00 00       	call   1b3e <_Z13destructArrayP5Array>
+    for (size_t i = 0; i < table->size; ++i)
+    1694:	48 83 45 f8 01       	addq   $0x1,-0x8(%rbp)
+    1699:	eb d1                	jmp    166c <_Z17destructHashTableP9HashTable+0x14>
+    }
+    free(table->buckets);
+    169b:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    169f:	48 8b 00             	mov    (%rax),%rax
+    16a2:	48 89 c7             	mov    %rax,%rdi
+    16a5:	e8 86 f9 ff ff       	call   1030 <free@plt>
+}
+    16aa:	90                   	nop
+    16ab:	c9                   	leave  
+    16ac:	c3                   	ret    
+
+00000000000016ad <_Z16reallocHashTableP9HashTable>:
+
+
+void reallocHashTable(HashTable* table)
+{   
+    16ad:	55                   	push   %rbp
+    16ae:	48 89 e5             	mov    %rsp,%rbp
+    16b1:	48 83 ec 70          	sub    $0x70,%rsp
+    16b5:	48 89 7d 98          	mov    %rdi,-0x68(%rbp)
+    16b9:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    16c0:	00 00 
+    16c2:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    16c6:	31 c0                	xor    %eax,%eax
+    size_t new_size = table->size * 2;
+    16c8:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    16cc:	48 8b 40 08          	mov    0x8(%rax),%rax
+    16d0:	48 01 c0             	add    %rax,%rax
+    16d3:	48 89 45 c8          	mov    %rax,-0x38(%rbp)
+    Array* realloc_buckets = (Array*)calloc(new_size, sizeof(Array));
+    16d7:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+    16db:	be 20 00 00 00       	mov    $0x20,%esi
+    16e0:	48 89 c7             	mov    %rax,%rdi
+    16e3:	e8 d8 f9 ff ff       	call   10c0 <calloc@plt>
+    16e8:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+    for (size_t i = 0; i < new_size; ++i)
+    16ec:	48 c7 45 a8 00 00 00 	movq   $0x0,-0x58(%rbp)
+    16f3:	00 
+    16f4:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+    16f8:	48 3b 45 c8          	cmp    -0x38(%rbp),%rax
+    16fc:	73 2d                	jae    172b <_Z16reallocHashTableP9HashTable+0x7e>
+    {
+        constructArray(&realloc_buckets[i], START_CAPACITY, compareElements);
+    16fe:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+    1702:	48 c1 e0 05          	shl    $0x5,%rax
+    1706:	48 89 c2             	mov    %rax,%rdx
+    1709:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+    170d:	48 01 d0             	add    %rdx,%rax
+    1710:	48 8d 15 7c fe ff ff 	lea    -0x184(%rip),%rdx        # 1593 <_Z15compareElementsP7ElementS0_>
+    1717:	be 08 00 00 00       	mov    $0x8,%esi
+    171c:	48 89 c7             	mov    %rax,%rdi
+    171f:	e8 f1 02 00 00       	call   1a15 <_Z14constructArrayP5ArraymPFbP7ElementS2_E>
+    for (size_t i = 0; i < new_size; ++i)
+    1724:	48 83 45 a8 01       	addq   $0x1,-0x58(%rbp)
+    1729:	eb c9                	jmp    16f4 <_Z16reallocHashTableP9HashTable+0x47>
+    }
+    for (size_t i = 0; i < table->size; ++i)
+    172b:	48 c7 45 b0 00 00 00 	movq   $0x0,-0x50(%rbp)
+    1732:	00 
+    1733:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    1737:	48 8b 40 08          	mov    0x8(%rax),%rax
+    173b:	48 39 45 b0          	cmp    %rax,-0x50(%rbp)
+    173f:	0f 83 ad 00 00 00    	jae    17f2 <_Z16reallocHashTableP9HashTable+0x145>
+    {   
+        for (size_t j = 0; j < table->buckets[i].size; ++j)
+    1745:	48 c7 45 b8 00 00 00 	movq   $0x0,-0x48(%rbp)
+    174c:	00 
+    174d:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    1751:	48 8b 10             	mov    (%rax),%rdx
+    1754:	48 8b 45 b0          	mov    -0x50(%rbp),%rax
+    1758:	48 c1 e0 05          	shl    $0x5,%rax
+    175c:	48 01 d0             	add    %rdx,%rax
+    175f:	48 8b 40 08          	mov    0x8(%rax),%rax
+    1763:	48 39 45 b8          	cmp    %rax,-0x48(%rbp)
+    1767:	73 7f                	jae    17e8 <_Z16reallocHashTableP9HashTable+0x13b>
+        {
+            Element element = table->buckets[i].data[j];
+    1769:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    176d:	48 8b 10             	mov    (%rax),%rdx
+    1770:	48 8b 45 b0          	mov    -0x50(%rbp),%rax
+    1774:	48 c1 e0 05          	shl    $0x5,%rax
+    1778:	48 01 d0             	add    %rdx,%rax
+    177b:	48 8b 50 10          	mov    0x10(%rax),%rdx
+    177f:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    1783:	48 c1 e0 04          	shl    $0x4,%rax
+    1787:	48 01 d0             	add    %rdx,%rax
+    178a:	48 8b 50 08          	mov    0x8(%rax),%rdx
+    178e:	48 8b 00             	mov    (%rax),%rax
+    1791:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+    1795:	48 89 55 e8          	mov    %rdx,-0x18(%rbp)
+            size_t hash = table->getHash(element.key, new_size);
+    1799:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    179d:	48 8b 48 18          	mov    0x18(%rax),%rcx
+    17a1:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    17a5:	48 8b 55 c8          	mov    -0x38(%rbp),%rdx
+    17a9:	48 89 d6             	mov    %rdx,%rsi
+    17ac:	48 89 c7             	mov    %rax,%rdi
+    17af:	ff d1                	call   *%rcx
+    17b1:	48 89 45 d8          	mov    %rax,-0x28(%rbp)
+            pushBackArray(&realloc_buckets[hash], element);            
+    17b5:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    17b9:	48 c1 e0 05          	shl    $0x5,%rax
+    17bd:	48 89 c2             	mov    %rax,%rdx
+    17c0:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+    17c4:	48 8d 0c 02          	lea    (%rdx,%rax,1),%rcx
+    17c8:	48 8b 55 e0          	mov    -0x20(%rbp),%rdx
+    17cc:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    17d0:	48 89 d6             	mov    %rdx,%rsi
+    17d3:	48 89 c2             	mov    %rax,%rdx
+    17d6:	48 89 cf             	mov    %rcx,%rdi
+    17d9:	e8 d4 02 00 00       	call   1ab2 <_Z13pushBackArrayP5Array7Element>
+        for (size_t j = 0; j < table->buckets[i].size; ++j)
+    17de:	48 83 45 b8 01       	addq   $0x1,-0x48(%rbp)
+    17e3:	e9 65 ff ff ff       	jmp    174d <_Z16reallocHashTableP9HashTable+0xa0>
+    for (size_t i = 0; i < table->size; ++i)
+    17e8:	48 83 45 b0 01       	addq   $0x1,-0x50(%rbp)
+    17ed:	e9 41 ff ff ff       	jmp    1733 <_Z16reallocHashTableP9HashTable+0x86>
+        }
+    }
+    for (size_t i = 0; i < table->size; ++i)
+    17f2:	48 c7 45 c0 00 00 00 	movq   $0x0,-0x40(%rbp)
+    17f9:	00 
+    17fa:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    17fe:	48 8b 40 08          	mov    0x8(%rax),%rax
+    1802:	48 39 45 c0          	cmp    %rax,-0x40(%rbp)
+    1806:	73 21                	jae    1829 <_Z16reallocHashTableP9HashTable+0x17c>
+    {
+        destructArray(&table->buckets[i]);
+    1808:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    180c:	48 8b 10             	mov    (%rax),%rdx
+    180f:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    1813:	48 c1 e0 05          	shl    $0x5,%rax
+    1817:	48 01 d0             	add    %rdx,%rax
+    181a:	48 89 c7             	mov    %rax,%rdi
+    181d:	e8 1c 03 00 00       	call   1b3e <_Z13destructArrayP5Array>
+    for (size_t i = 0; i < table->size; ++i)
+    1822:	48 83 45 c0 01       	addq   $0x1,-0x40(%rbp)
+    1827:	eb d1                	jmp    17fa <_Z16reallocHashTableP9HashTable+0x14d>
+    }
+    free(table->buckets);
+    1829:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    182d:	48 8b 00             	mov    (%rax),%rax
+    1830:	48 89 c7             	mov    %rax,%rdi
+    1833:	e8 f8 f7 ff ff       	call   1030 <free@plt>
+
+    table->size = new_size;
+    1838:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    183c:	48 8b 55 c8          	mov    -0x38(%rbp),%rdx
+    1840:	48 89 50 08          	mov    %rdx,0x8(%rax)
+    table->buckets = realloc_buckets;
+    1844:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    1848:	48 8b 55 d0          	mov    -0x30(%rbp),%rdx
+    184c:	48 89 10             	mov    %rdx,(%rax)
+}
+    184f:	90                   	nop
+    1850:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1854:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    185b:	00 00 
+    185d:	74 05                	je     1864 <_Z16reallocHashTableP9HashTable+0x1b7>
+    185f:	e8 1c f8 ff ff       	call   1080 <__stack_chk_fail@plt>
+    1864:	c9                   	leave  
+    1865:	c3                   	ret    
+
+0000000000001866 <_Z13pushHashTableP9HashTable7Element>:
+
+void pushHashTable(HashTable* table, elem_t value)
+{   
+    1866:	55                   	push   %rbp
+    1867:	48 89 e5             	mov    %rsp,%rbp
+    186a:	48 83 ec 30          	sub    $0x30,%rsp
+    186e:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    1872:	48 89 d1             	mov    %rdx,%rcx
+    1875:	48 89 f0             	mov    %rsi,%rax
+    1878:	48 89 fa             	mov    %rdi,%rdx
+    187b:	48 89 ca             	mov    %rcx,%rdx
+    187e:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+    1882:	48 89 55 d8          	mov    %rdx,-0x28(%rbp)
+    size_t hash = table->getHash(value.key, table->size);
+    1886:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    188a:	48 8b 48 18          	mov    0x18(%rax),%rcx
+    188e:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1892:	48 8b 50 08          	mov    0x8(%rax),%rdx
+    1896:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+    189a:	48 89 d6             	mov    %rdx,%rsi
+    189d:	48 89 c7             	mov    %rax,%rdi
+    18a0:	ff d1                	call   *%rcx
+    18a2:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    
+    pushBackArray(&table->buckets[hash], value);
+    18a6:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    18aa:	48 8b 10             	mov    (%rax),%rdx
+    18ad:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    18b1:	48 c1 e0 05          	shl    $0x5,%rax
+    18b5:	48 8d 0c 02          	lea    (%rdx,%rax,1),%rcx
+    18b9:	48 8b 55 d0          	mov    -0x30(%rbp),%rdx
+    18bd:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    18c1:	48 89 d6             	mov    %rdx,%rsi
+    18c4:	48 89 c2             	mov    %rax,%rdx
+    18c7:	48 89 cf             	mov    %rcx,%rdi
+    18ca:	e8 e3 01 00 00       	call   1ab2 <_Z13pushBackArrayP5Array7Element>
+    
+    ++table->amount_elements;
+    18cf:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    18d3:	48 8b 40 10          	mov    0x10(%rax),%rax
+    18d7:	48 8d 50 01          	lea    0x1(%rax),%rdx
+    18db:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    18df:	48 89 50 10          	mov    %rdx,0x10(%rax)
+    //Знаем данные заранее, так что мы можем подобрать размера хеш-таблицы, чтобы было хорошее хеширование (совершенное)
+    // if (table->amount_elements * 100 / table->size > LOAD_FACTOR)
+    // {   
+    //     reallocHashTable(table);
+    // }
+}
+    18e3:	90                   	nop
+    18e4:	c9                   	leave  
+    18e5:	c3                   	ret    
+
+00000000000018e6 <_Z13findHashTableP9HashTableP7Element>:
+
+elem_t* findHashTable(HashTable* table, elem_t* value)
+{   
+    18e6:	55                   	push   %rbp
+    18e7:	48 89 e5             	mov    %rsp,%rbp
+    18ea:	48 83 ec 20          	sub    $0x20,%rsp
+    18ee:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    18f2:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    size_t hash = table->getHash(value->key, table->size);
+    18f6:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    18fa:	48 8b 48 18          	mov    0x18(%rax),%rcx
+    18fe:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1902:	48 8b 50 08          	mov    0x8(%rax),%rdx
+    1906:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    190a:	48 8b 00             	mov    (%rax),%rax
+    190d:	48 89 d6             	mov    %rdx,%rsi
+    1910:	48 89 c7             	mov    %rax,%rdi
+    1913:	ff d1                	call   *%rcx
+    1915:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+
+    int idx = findArray(&table->buckets[hash], value);
+    1919:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    191d:	48 8b 10             	mov    (%rax),%rdx
+    1920:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1924:	48 c1 e0 05          	shl    $0x5,%rax
+    1928:	48 01 c2             	add    %rax,%rdx
+    192b:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    192f:	48 89 c6             	mov    %rax,%rsi
+    1932:	48 89 d7             	mov    %rdx,%rdi
+    1935:	e8 23 02 00 00       	call   1b5d <_Z9findArrayP5ArrayP7Element>
+    193a:	89 45 f4             	mov    %eax,-0xc(%rbp)
+
+    if (idx != -1) return &table->buckets[hash].data[idx];
+    193d:	83 7d f4 ff          	cmpl   $0xffffffff,-0xc(%rbp)
+    1941:	74 24                	je     1967 <_Z13findHashTableP9HashTableP7Element+0x81>
+    1943:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1947:	48 8b 10             	mov    (%rax),%rdx
+    194a:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    194e:	48 c1 e0 05          	shl    $0x5,%rax
+    1952:	48 01 d0             	add    %rdx,%rax
+    1955:	48 8b 50 10          	mov    0x10(%rax),%rdx
+    1959:	8b 45 f4             	mov    -0xc(%rbp),%eax
+    195c:	48 98                	cltq   
+    195e:	48 c1 e0 04          	shl    $0x4,%rax
+    1962:	48 01 d0             	add    %rdx,%rax
+    1965:	eb 05                	jmp    196c <_Z13findHashTableP9HashTableP7Element+0x86>
+
+    return nullptr;
+    1967:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+    196c:	c9                   	leave  
+    196d:	c3                   	ret    
+
+000000000000196e <_Z12newHashTablemPFmPcmE>:
+
+HashTable* newHashTable(size_t size, 
+                        size_t (* getHash)(char* value, size_t module))
+{
+    196e:	55                   	push   %rbp
+    196f:	48 89 e5             	mov    %rsp,%rbp
+    1972:	48 83 ec 20          	sub    $0x20,%rsp
+    1976:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    197a:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    HashTable* new_table = (HashTable*)calloc(1, sizeof(HashTable));
+    197e:	be 20 00 00 00       	mov    $0x20,%esi
+    1983:	bf 01 00 00 00       	mov    $0x1,%edi
+    1988:	e8 33 f7 ff ff       	call   10c0 <calloc@plt>
+    198d:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+
+    constructHashTable(new_table, size, getHash);
+    1991:	48 8b 55 e0          	mov    -0x20(%rbp),%rdx
+    1995:	48 8b 4d e8          	mov    -0x18(%rbp),%rcx
+    1999:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    199d:	48 89 ce             	mov    %rcx,%rsi
+    19a0:	48 89 c7             	mov    %rax,%rdi
+    19a3:	e8 1b fc ff ff       	call   15c3 <_Z18constructHashTableP9HashTablemPFmPcmE>
+
+    return new_table;
+    19a8:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+}
+    19ac:	c9                   	leave  
+    19ad:	c3                   	ret    
+
+00000000000019ae <_Z15deleteHashTableP9HashTable>:
+
+HashTable* deleteHashTable(HashTable* table)
+{
+    19ae:	55                   	push   %rbp
+    19af:	48 89 e5             	mov    %rsp,%rbp
+    19b2:	48 83 ec 10          	sub    $0x10,%rsp
+    19b6:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    destructHashTable(table);
+    19ba:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    19be:	48 89 c7             	mov    %rax,%rdi
+    19c1:	e8 92 fc ff ff       	call   1658 <_Z17destructHashTableP9HashTable>
+
+    free(table);
+    19c6:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    19ca:	48 89 c7             	mov    %rax,%rdi
+    19cd:	e8 5e f6 ff ff       	call   1030 <free@plt>
+
+    return nullptr;
+    19d2:	b8 00 00 00 00       	mov    $0x0,%eax
+    19d7:	c9                   	leave  
+    19d8:	c3                   	ret    
+    19d9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+00000000000019e0 <HolyPoly_asm>:
+prime_number equ 7988587
+
+section .text
+
+HolyPoly_asm:
+    movzx rcx, byte [rdi]
+    19e0:	48 0f b6 0f          	movzbq (%rdi),%rcx
+    inc rdi
+    19e4:	48 ff c7             	inc    %rdi
+    mov rax, 1
+    19e7:	b8 01 00 00 00       	mov    $0x1,%eax
+
+00000000000019ec <HolyPoly_asm.loop>:
+        
+.loop:
+    movzx rdx, byte [rdi]
+    19ec:	48 0f b6 17          	movzbq (%rdi),%rdx
+    test rdx, rdx
+    19f0:	48 85 d2             	test   %rdx,%rdx
+    je .endLoop
+    19f3:	74 13                	je     1a08 <HolyPoly_asm.endLoop>
+
+    imul rdx, rax
+    19f5:	48 0f af d0          	imul   %rax,%rdx
+    add rcx, rdx
+    19f9:	48 01 d1             	add    %rdx,%rcx
+
+    imul rax, prime_number
+    19fc:	48 69 c0 6b e5 79 00 	imul   $0x79e56b,%rax,%rax
+
+    inc rdi
+    1a03:	48 ff c7             	inc    %rdi
+    jmp .loop
+    1a06:	eb e4                	jmp    19ec <HolyPoly_asm.loop>
+
+0000000000001a08 <HolyPoly_asm.endLoop>:
+.endLoop:
+
+    mov rax, rcx
+    1a08:	48 89 c8             	mov    %rcx,%rax
+    xor rdx, rdx
+    1a0b:	48 31 d2             	xor    %rdx,%rdx
+    div rsi
+    1a0e:	48 f7 f6             	div    %rsi
+    mov rax, rdx
+    1a11:	48 89 d0             	mov    %rdx,%rax
+
+    ret
+    1a14:	c3                   	ret    
+
+0000000000001a15 <_Z14constructArrayP5ArraymPFbP7ElementS2_E>:
+#include "Array.h"
+
+void constructArray(Array* array, size_t start_capacity, 
+                    bool (*comparator)(elem_t* value_a, elem_t* value_b))
+{
+    1a15:	55                   	push   %rbp
+    1a16:	48 89 e5             	mov    %rsp,%rbp
+    1a19:	48 83 ec 20          	sub    $0x20,%rsp
+    1a1d:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    1a21:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+    1a25:	48 89 55 e8          	mov    %rdx,-0x18(%rbp)
+    array->data = (elem_t*)calloc(start_capacity, sizeof(elem_t));
+    1a29:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    1a2d:	be 10 00 00 00       	mov    $0x10,%esi
+    1a32:	48 89 c7             	mov    %rax,%rdi
+    1a35:	e8 86 f6 ff ff       	call   10c0 <calloc@plt>
+    1a3a:	48 89 c2             	mov    %rax,%rdx
+    1a3d:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1a41:	48 89 50 10          	mov    %rdx,0x10(%rax)
+    array->comparator = comparator;
+    1a45:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1a49:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+    1a4d:	48 89 50 18          	mov    %rdx,0x18(%rax)
+    array->capacity = start_capacity;
+    1a51:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1a55:	48 8b 55 f0          	mov    -0x10(%rbp),%rdx
+    1a59:	48 89 10             	mov    %rdx,(%rax)
+    array->size = 0;
+    1a5c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1a60:	48 c7 40 08 00 00 00 	movq   $0x0,0x8(%rax)
+    1a67:	00 
+}
+    1a68:	90                   	nop
+    1a69:	c9                   	leave  
+    1a6a:	c3                   	ret    
+
+0000000000001a6b <_Z12reallocArrayP5Arraym>:
+
+void reallocArray(Array* array, size_t new_capacity)
+{
+    1a6b:	55                   	push   %rbp
+    1a6c:	48 89 e5             	mov    %rsp,%rbp
+    1a6f:	48 83 ec 10          	sub    $0x10,%rsp
+    1a73:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    1a77:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+    array->capacity = new_capacity;
+    1a7b:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1a7f:	48 8b 55 f0          	mov    -0x10(%rbp),%rdx
+    1a83:	48 89 10             	mov    %rdx,(%rax)
+
+    array->data = (elem_t*)realloc(array->data, array->capacity * sizeof(elem_t));
+    1a86:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1a8a:	48 8b 00             	mov    (%rax),%rax
+    1a8d:	48 c1 e0 04          	shl    $0x4,%rax
+    1a91:	48 89 c2             	mov    %rax,%rdx
+    1a94:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1a98:	48 8b 40 10          	mov    0x10(%rax),%rax
+    1a9c:	48 89 d6             	mov    %rdx,%rsi
+    1a9f:	48 89 c7             	mov    %rax,%rdi
+    1aa2:	e8 79 f6 ff ff       	call   1120 <realloc@plt>
+    1aa7:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+    1aab:	48 89 42 10          	mov    %rax,0x10(%rdx)
+}
+    1aaf:	90                   	nop
+    1ab0:	c9                   	leave  
+    1ab1:	c3                   	ret    
+
+0000000000001ab2 <_Z13pushBackArrayP5Array7Element>:
+
+void pushBackArray(Array* array, elem_t value)
+{
+    1ab2:	55                   	push   %rbp
+    1ab3:	48 89 e5             	mov    %rsp,%rbp
+    1ab6:	48 83 ec 20          	sub    $0x20,%rsp
+    1aba:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    1abe:	48 89 d1             	mov    %rdx,%rcx
+    1ac1:	48 89 f0             	mov    %rsi,%rax
+    1ac4:	48 89 fa             	mov    %rdi,%rdx
+    1ac7:	48 89 ca             	mov    %rcx,%rdx
+    1aca:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+    1ace:	48 89 55 e8          	mov    %rdx,-0x18(%rbp)
+    if (array->size + 1 > array->capacity)
+    1ad2:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1ad6:	48 8b 40 08          	mov    0x8(%rax),%rax
+    1ada:	48 8d 50 01          	lea    0x1(%rax),%rdx
+    1ade:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1ae2:	48 8b 00             	mov    (%rax),%rax
+    1ae5:	48 39 c2             	cmp    %rax,%rdx
+    1ae8:	76 1e                	jbe    1b08 <_Z13pushBackArrayP5Array7Element+0x56>
+    {   
+        reallocArray(array, (array->capacity + 1) * 2);
+    1aea:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1aee:	48 8b 00             	mov    (%rax),%rax
+    1af1:	48 83 c0 01          	add    $0x1,%rax
+    1af5:	48 8d 14 00          	lea    (%rax,%rax,1),%rdx
+    1af9:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1afd:	48 89 d6             	mov    %rdx,%rsi
+    1b00:	48 89 c7             	mov    %rax,%rdi
+    1b03:	e8 63 ff ff ff       	call   1a6b <_Z12reallocArrayP5Arraym>
+    }
+    array->data[array->size++] = value;
+    1b08:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1b0c:	48 8b 70 10          	mov    0x10(%rax),%rsi
+    1b10:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1b14:	48 8b 40 08          	mov    0x8(%rax),%rax
+    1b18:	48 8d 48 01          	lea    0x1(%rax),%rcx
+    1b1c:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+    1b20:	48 89 4a 08          	mov    %rcx,0x8(%rdx)
+    1b24:	48 c1 e0 04          	shl    $0x4,%rax
+    1b28:	48 8d 0c 06          	lea    (%rsi,%rax,1),%rcx
+    1b2c:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1b30:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+    1b34:	48 89 01             	mov    %rax,(%rcx)
+    1b37:	48 89 51 08          	mov    %rdx,0x8(%rcx)
+}
+    1b3b:	90                   	nop
+    1b3c:	c9                   	leave  
+    1b3d:	c3                   	ret    
+
+0000000000001b3e <_Z13destructArrayP5Array>:
+
+void destructArray(Array* array)
+{
+    1b3e:	55                   	push   %rbp
+    1b3f:	48 89 e5             	mov    %rsp,%rbp
+    1b42:	48 83 ec 10          	sub    $0x10,%rsp
+    1b46:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    free(array->data);
+    1b4a:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1b4e:	48 8b 40 10          	mov    0x10(%rax),%rax
+    1b52:	48 89 c7             	mov    %rax,%rdi
+    1b55:	e8 d6 f4 ff ff       	call   1030 <free@plt>
+}
+    1b5a:	90                   	nop
+    1b5b:	c9                   	leave  
+    1b5c:	c3                   	ret    
+
+0000000000001b5d <_Z9findArrayP5ArrayP7Element>:
+
+int findArray(Array* array, elem_t* value)
+{   
+    1b5d:	55                   	push   %rbp
+    1b5e:	48 89 e5             	mov    %rsp,%rbp
+    1b61:	48 83 ec 20          	sub    $0x20,%rsp
+    1b65:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    1b69:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    int size = array->size;
+    1b6d:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1b71:	48 8b 40 08          	mov    0x8(%rax),%rax
+    1b75:	89 45 fc             	mov    %eax,-0x4(%rbp)
+
+    for (int i = 0; i < size; ++i)
+    1b78:	c7 45 f8 00 00 00 00 	movl   $0x0,-0x8(%rbp)
+    1b7f:	8b 45 f8             	mov    -0x8(%rbp),%eax
+    1b82:	3b 45 fc             	cmp    -0x4(%rbp),%eax
+    1b85:	7d 37                	jge    1bbe <_Z9findArrayP5ArrayP7Element+0x61>
+    {
+        if (array->comparator(&array->data[i], value))
+    1b87:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1b8b:	48 8b 50 18          	mov    0x18(%rax),%rdx
+    1b8f:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1b93:	48 8b 48 10          	mov    0x10(%rax),%rcx
+    1b97:	8b 45 f8             	mov    -0x8(%rbp),%eax
+    1b9a:	48 98                	cltq   
+    1b9c:	48 c1 e0 04          	shl    $0x4,%rax
+    1ba0:	48 01 c1             	add    %rax,%rcx
+    1ba3:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1ba7:	48 89 c6             	mov    %rax,%rsi
+    1baa:	48 89 cf             	mov    %rcx,%rdi
+    1bad:	ff d2                	call   *%rdx
+    1baf:	84 c0                	test   %al,%al
+    1bb1:	74 05                	je     1bb8 <_Z9findArrayP5ArrayP7Element+0x5b>
+        {
+            return i;
+    1bb3:	8b 45 f8             	mov    -0x8(%rbp),%eax
+    1bb6:	eb 0b                	jmp    1bc3 <_Z9findArrayP5ArrayP7Element+0x66>
+    for (int i = 0; i < size; ++i)
+    1bb8:	83 45 f8 01          	addl   $0x1,-0x8(%rbp)
+    1bbc:	eb c1                	jmp    1b7f <_Z9findArrayP5ArrayP7Element+0x22>
+        }
+    }
+    return -1;
+    1bbe:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+}
+    1bc3:	c9                   	leave  
+    1bc4:	c3                   	ret    
+
+0000000000001bc5 <_Z8newArraymPFbP7ElementS0_E>:
+
+Array* newArray(size_t start_capacity, 
+                bool (*comparator)(elem_t* value_a, elem_t* value_b))
+{
+    1bc5:	55                   	push   %rbp
+    1bc6:	48 89 e5             	mov    %rsp,%rbp
+    1bc9:	48 83 ec 20          	sub    $0x20,%rsp
+    1bcd:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    1bd1:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    Array* array = (Array*)calloc(start_capacity, sizeof(elem_t));
+    1bd5:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1bd9:	be 10 00 00 00       	mov    $0x10,%esi
+    1bde:	48 89 c7             	mov    %rax,%rdi
+    1be1:	e8 da f4 ff ff       	call   10c0 <calloc@plt>
+    1be6:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+
+    constructArray(array, start_capacity, comparator);
+    1bea:	48 8b 55 e0          	mov    -0x20(%rbp),%rdx
+    1bee:	48 8b 4d e8          	mov    -0x18(%rbp),%rcx
+    1bf2:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1bf6:	48 89 ce             	mov    %rcx,%rsi
+    1bf9:	48 89 c7             	mov    %rax,%rdi
+    1bfc:	e8 14 fe ff ff       	call   1a15 <_Z14constructArrayP5ArraymPFbP7ElementS2_E>
+
+    return array;
+    1c01:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+}
+    1c05:	c9                   	leave  
+    1c06:	c3                   	ret    
+
+0000000000001c07 <_Z11deleteArrayP5Array>:
+
+Array* deleteArray(Array* array)
+{
+    1c07:	55                   	push   %rbp
+    1c08:	48 89 e5             	mov    %rsp,%rbp
+    1c0b:	48 83 ec 10          	sub    $0x10,%rsp
+    1c0f:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    destructArray(array);
+    1c13:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1c17:	48 89 c7             	mov    %rax,%rdi
+    1c1a:	e8 1f ff ff ff       	call   1b3e <_Z13destructArrayP5Array>
+
+    return nullptr;
+    1c1f:	b8 00 00 00 00       	mov    $0x0,%eax
+    1c24:	c9                   	leave  
+    1c25:	c3                   	ret    
+
+0000000000001c26 <_Z27OH_YEAH_MA_SENPAI_GO_ROR_MEmm>:
+
+size_t DEFAULT_SIZE = (size_t)64000;
+const char* punct_marks = ".\t ,:\n?!;";
+
+size_t OH_YEAH_MA_SENPAI_GO_ROR_ME(size_t rorable_number, size_t amount_rors)
+{
+    1c26:	55                   	push   %rbp
+    1c27:	48 89 e5             	mov    %rsp,%rbp
+    1c2a:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    1c2e:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+    return (rorable_number >> amount_rors) | (rorable_number << (sizeof(size_t) * 8 - amount_rors));
+    1c32:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    1c36:	89 c2                	mov    %eax,%edx
+    1c38:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1c3c:	89 d1                	mov    %edx,%ecx
+    1c3e:	48 d3 c8             	ror    %cl,%rax
+}
+    1c41:	5d                   	pop    %rbp
+    1c42:	c3                   	ret    
+
+0000000000001c43 <_Z8HolyPolyPcm>:
+
+size_t HolyPoly(char* value, size_t module)
+{
+    1c43:	55                   	push   %rbp
+    1c44:	48 89 e5             	mov    %rsp,%rbp
+    1c47:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+    1c4b:	48 89 75 d0          	mov    %rsi,-0x30(%rbp)
+    size_t prime_number = 7988587;
+    1c4f:	48 c7 45 f8 6b e5 79 	movq   $0x79e56b,-0x8(%rbp)
+    1c56:	00 
+    size_t hash = *value;
+    1c57:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    1c5b:	0f b6 00             	movzbl (%rax),%eax
+    1c5e:	48 0f be c0          	movsbq %al,%rax
+    1c62:	48 89 45 e8          	mov    %rax,-0x18(%rbp)
+    size_t accumulator = 1;
+    1c66:	48 c7 45 f0 01 00 00 	movq   $0x1,-0x10(%rbp)
+    1c6d:	00 
+
+    for (value; *value != '\0'; ++value)
+    1c6e:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    1c72:	0f b6 00             	movzbl (%rax),%eax
+    1c75:	84 c0                	test   %al,%al
+    1c77:	74 28                	je     1ca1 <_Z8HolyPolyPcm+0x5e>
+    {   
+        hash = hash + (*value) * accumulator;
+    1c79:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    1c7d:	0f b6 00             	movzbl (%rax),%eax
+    1c80:	48 0f be c0          	movsbq %al,%rax
+    1c84:	48 0f af 45 f0       	imul   -0x10(%rbp),%rax
+    1c89:	48 01 45 e8          	add    %rax,-0x18(%rbp)
+
+        accumulator *= prime_number;
+    1c8d:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    1c91:	48 0f af 45 f8       	imul   -0x8(%rbp),%rax
+    1c96:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+    for (value; *value != '\0'; ++value)
+    1c9a:	48 83 45 d8 01       	addq   $0x1,-0x28(%rbp)
+    1c9f:	eb cd                	jmp    1c6e <_Z8HolyPolyPcm+0x2b>
+    }
+    return hash % module;
+    1ca1:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1ca5:	ba 00 00 00 00       	mov    $0x0,%edx
+    1caa:	48 f7 75 d0          	divq   -0x30(%rbp)
+    1cae:	48 89 d0             	mov    %rdx,%rax
+}
+    1cb1:	5d                   	pop    %rbp
+    1cb2:	c3                   	ret    
+
+0000000000001cb3 <_Z18skipUselessSymbolsPPc>:
+
+void skipUselessSymbols(char** string)
+{   
+    1cb3:	55                   	push   %rbp
+    1cb4:	48 89 e5             	mov    %rsp,%rbp
+    1cb7:	48 83 ec 10          	sub    $0x10,%rsp
+    1cbb:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    while (isspace(*(*string)))
+    1cbf:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1cc3:	48 8b 00             	mov    (%rax),%rax
+    1cc6:	0f b6 00             	movzbl (%rax),%eax
+    1cc9:	0f be c0             	movsbl %al,%eax
+    1ccc:	89 c7                	mov    %eax,%edi
+    1cce:	e8 cd f3 ff ff       	call   10a0 <isspace@plt>
+    1cd3:	85 c0                	test   %eax,%eax
+    1cd5:	74 14                	je     1ceb <_Z18skipUselessSymbolsPPc+0x38>
+    {   
+        ++*string; 
+    1cd7:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1cdb:	48 8b 00             	mov    (%rax),%rax
+    1cde:	48 8d 50 01          	lea    0x1(%rax),%rdx
+    1ce2:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1ce6:	48 89 10             	mov    %rdx,(%rax)
+    while (isspace(*(*string)))
+    1ce9:	eb d4                	jmp    1cbf <_Z18skipUselessSymbolsPPc+0xc>
+    }
+}
+    1ceb:	90                   	nop
+    1cec:	c9                   	leave  
+    1ced:	c3                   	ret    
+
+0000000000001cee <_Z19constructDictionaryP10DictionaryPcPFmS1_mE>:
+
+void constructDictionary(Dictionary* dict, char* buffer, 
+                         size_t (* getHash)(char* value, size_t module))
+{
+    1cee:	55                   	push   %rbp
+    1cef:	48 89 e5             	mov    %rsp,%rbp
+    1cf2:	48 83 ec 50          	sub    $0x50,%rsp
+    1cf6:	48 89 7d c8          	mov    %rdi,-0x38(%rbp)
+    1cfa:	48 89 75 c0          	mov    %rsi,-0x40(%rbp)
+    1cfe:	48 89 55 b8          	mov    %rdx,-0x48(%rbp)
+    1d02:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    1d09:	00 00 
+    1d0b:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    1d0f:	31 c0                	xor    %eax,%eax
+    dict->buffer = buffer;
+    1d11:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+    1d15:	48 8b 55 c0          	mov    -0x40(%rbp),%rdx
+    1d19:	48 89 50 08          	mov    %rdx,0x8(%rax)
+    dict->table = (HashTable*)calloc(1, sizeof(HashTable));
+    1d1d:	be 20 00 00 00       	mov    $0x20,%esi
+    1d22:	bf 01 00 00 00       	mov    $0x1,%edi
+    1d27:	e8 94 f3 ff ff       	call   10c0 <calloc@plt>
+    1d2c:	48 89 c2             	mov    %rax,%rdx
+    1d2f:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+    1d33:	48 89 10             	mov    %rdx,(%rax)
+
+    constructHashTable(dict->table, DEFAULT_SIZE, getHash);
+    1d36:	48 8b 0d 83 33 00 00 	mov    0x3383(%rip),%rcx        # 50c0 <DEFAULT_SIZE>
+    1d3d:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+    1d41:	48 8b 00             	mov    (%rax),%rax
+    1d44:	48 8b 55 b8          	mov    -0x48(%rbp),%rdx
+    1d48:	48 89 ce             	mov    %rcx,%rsi
+    1d4b:	48 89 c7             	mov    %rax,%rdi
+    1d4e:	e8 70 f8 ff ff       	call   15c3 <_Z18constructHashTableP9HashTablemPFmPcmE>
+
+    FILE* hash_dump = fopen("res/hash_dump.txt", "w");
+    1d53:	48 8d 35 08 13 00 00 	lea    0x1308(%rip),%rsi        # 3062 <_ZL1b+0x12>
+    1d5a:	48 8d 3d 03 13 00 00 	lea    0x1303(%rip),%rdi        # 3064 <_ZL1b+0x14>
+    1d61:	e8 ca f3 ff ff       	call   1130 <fopen@plt>
+    1d66:	48 89 45 d8          	mov    %rax,-0x28(%rbp)
+    Element element = {};
+    1d6a:	48 c7 45 e0 00 00 00 	movq   $0x0,-0x20(%rbp)
+    1d71:	00 
+    1d72:	48 c7 45 e8 00 00 00 	movq   $0x0,-0x18(%rbp)
+    1d79:	00 
+    char* current_word = strtok(buffer, "=");
+    1d7a:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    1d7e:	48 8d 35 f1 12 00 00 	lea    0x12f1(%rip),%rsi        # 3076 <_ZL1b+0x26>
+    1d85:	48 89 c7             	mov    %rax,%rdi
+    1d88:	e8 b3 f3 ff ff       	call   1140 <strtok@plt>
+    1d8d:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+    while (current_word != nullptr)
+    1d91:	48 83 7d d0 00       	cmpq   $0x0,-0x30(%rbp)
+    1d96:	0f 84 a5 00 00 00    	je     1e41 <_Z19constructDictionaryP10DictionaryPcPFmS1_mE+0x153>
+    {   
+        element.key = current_word + 1;
+    1d9c:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+    1da0:	48 83 c0 01          	add    $0x1,%rax
+    1da4:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+        current_word = strtok(nullptr, "\r\n");  
+    1da8:	48 8d 35 c9 12 00 00 	lea    0x12c9(%rip),%rsi        # 3078 <_ZL1b+0x28>
+    1daf:	bf 00 00 00 00       	mov    $0x0,%edi
+    1db4:	e8 87 f3 ff ff       	call   1140 <strtok@plt>
+    1db9:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+        
+        element.value = current_word;
+    1dbd:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+    1dc1:	48 89 45 e8          	mov    %rax,-0x18(%rbp)
+        current_word = strtok(nullptr, "=");
+    1dc5:	48 8d 35 aa 12 00 00 	lea    0x12aa(%rip),%rsi        # 3076 <_ZL1b+0x26>
+    1dcc:	bf 00 00 00 00       	mov    $0x0,%edi
+    1dd1:	e8 6a f3 ff ff       	call   1140 <strtok@plt>
+    1dd6:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+
+        fprintf(hash_dump,"(%s | %s) = (%zu)\n", element.key, element.value, dict->table->getHash(element.key, dict->table->size));
+    1dda:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+    1dde:	48 8b 00             	mov    (%rax),%rax
+    1de1:	48 8b 48 18          	mov    0x18(%rax),%rcx
+    1de5:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+    1de9:	48 8b 00             	mov    (%rax),%rax
+    1dec:	48 8b 50 08          	mov    0x8(%rax),%rdx
+    1df0:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1df4:	48 89 d6             	mov    %rdx,%rsi
+    1df7:	48 89 c7             	mov    %rax,%rdi
+    1dfa:	ff d1                	call   *%rcx
+    1dfc:	48 89 c6             	mov    %rax,%rsi
+    1dff:	48 8b 4d e8          	mov    -0x18(%rbp),%rcx
+    1e03:	48 8b 55 e0          	mov    -0x20(%rbp),%rdx
+    1e07:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    1e0b:	49 89 f0             	mov    %rsi,%r8
+    1e0e:	48 8d 35 66 12 00 00 	lea    0x1266(%rip),%rsi        # 307b <_ZL1b+0x2b>
+    1e15:	48 89 c7             	mov    %rax,%rdi
+    1e18:	b8 00 00 00 00       	mov    $0x0,%eax
+    1e1d:	e8 be f2 ff ff       	call   10e0 <fprintf@plt>
+        pushHashTable(dict->table, element);
+    1e22:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+    1e26:	48 8b 00             	mov    (%rax),%rax
+    1e29:	48 8b 4d e0          	mov    -0x20(%rbp),%rcx
+    1e2d:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+    1e31:	48 89 ce             	mov    %rcx,%rsi
+    1e34:	48 89 c7             	mov    %rax,%rdi
+    1e37:	e8 2a fa ff ff       	call   1866 <_Z13pushHashTableP9HashTable7Element>
+    while (current_word != nullptr)
+    1e3c:	e9 50 ff ff ff       	jmp    1d91 <_Z19constructDictionaryP10DictionaryPcPFmS1_mE+0xa3>
+    }
+    fclose(hash_dump);
+    1e41:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    1e45:	48 89 c7             	mov    %rax,%rdi
+    1e48:	e8 13 f2 ff ff       	call   1060 <fclose@plt>
+}
+    1e4d:	90                   	nop
+    1e4e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1e52:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    1e59:	00 00 
+    1e5b:	74 05                	je     1e62 <_Z19constructDictionaryP10DictionaryPcPFmS1_mE+0x174>
+    1e5d:	e8 1e f2 ff ff       	call   1080 <__stack_chk_fail@plt>
+    1e62:	c9                   	leave  
+    1e63:	c3                   	ret    
+
+0000000000001e64 <_Z19constructDictionaryP10DictionaryPc>:
+
+void constructDictionary(Dictionary* dict, char* buffer)
+{   
+    1e64:	55                   	push   %rbp
+    1e65:	48 89 e5             	mov    %rsp,%rbp
+    1e68:	48 83 ec 10          	sub    $0x10,%rsp
+    1e6c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    1e70:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+   constructDictionary(dict, buffer, HolyPoly_asm);
+    1e74:	48 8b 4d f0          	mov    -0x10(%rbp),%rcx
+    1e78:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1e7c:	48 8d 15 5d fb ff ff 	lea    -0x4a3(%rip),%rdx        # 19e0 <HolyPoly_asm>
+    1e83:	48 89 ce             	mov    %rcx,%rsi
+    1e86:	48 89 c7             	mov    %rax,%rdi
+    1e89:	e8 60 fe ff ff       	call   1cee <_Z19constructDictionaryP10DictionaryPcPFmS1_mE>
+}
+    1e8e:	90                   	nop
+    1e8f:	c9                   	leave  
+    1e90:	c3                   	ret    
+
+0000000000001e91 <_Z19constructDictionaryP10DictionaryPKc>:
+
+void constructDictionary(Dictionary* dict, const char* filename)
+{
+    1e91:	55                   	push   %rbp
+    1e92:	48 89 e5             	mov    %rsp,%rbp
+    1e95:	48 83 ec 20          	sub    $0x20,%rsp
+    1e99:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    1e9d:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    char* buffer = readFile(filename);
+    1ea1:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1ea5:	be 00 00 00 00       	mov    $0x0,%esi
+    1eaa:	48 89 c7             	mov    %rax,%rdi
+    1ead:	e8 98 07 00 00       	call   264a <_Z8readFilePKcPm>
+    1eb2:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+
+    constructDictionary(dict, buffer);
+    1eb6:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+    1eba:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1ebe:	48 89 d6             	mov    %rdx,%rsi
+    1ec1:	48 89 c7             	mov    %rax,%rdi
+    1ec4:	e8 9b ff ff ff       	call   1e64 <_Z19constructDictionaryP10DictionaryPc>
+}
+    1ec9:	90                   	nop
+    1eca:	c9                   	leave  
+    1ecb:	c3                   	ret    
+
+0000000000001ecc <_Z19constructDictionaryP10DictionaryPKcPFmPcmE>:
+
+void constructDictionary(Dictionary* dict, const char* filename, 
+                         size_t (* getHash)(char* value, size_t module))
+{
+    1ecc:	55                   	push   %rbp
+    1ecd:	48 89 e5             	mov    %rsp,%rbp
+    1ed0:	48 83 ec 30          	sub    $0x30,%rsp
+    1ed4:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    1ed8:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    1edc:	48 89 55 d8          	mov    %rdx,-0x28(%rbp)
+    char* buffer = readFile(filename);
+    1ee0:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1ee4:	be 00 00 00 00       	mov    $0x0,%esi
+    1ee9:	48 89 c7             	mov    %rax,%rdi
+    1eec:	e8 59 07 00 00       	call   264a <_Z8readFilePKcPm>
+    1ef1:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+
+    constructDictionary(dict, buffer, getHash);
+    1ef5:	48 8b 55 d8          	mov    -0x28(%rbp),%rdx
+    1ef9:	48 8b 4d f8          	mov    -0x8(%rbp),%rcx
+    1efd:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1f01:	48 89 ce             	mov    %rcx,%rsi
+    1f04:	48 89 c7             	mov    %rax,%rdi
+    1f07:	e8 e2 fd ff ff       	call   1cee <_Z19constructDictionaryP10DictionaryPcPFmS1_mE>
+}
+    1f0c:	90                   	nop
+    1f0d:	c9                   	leave  
+    1f0e:	c3                   	ret    
+
+0000000000001f0f <_Z17translateSentenceP10DictionaryPcP8_IO_FILE>:
+ * @param dict 
+ * @param sentence 
+ * @param output 
+ */
+void translateSentence(Dictionary* dict, char* sentence, FILE* output)
+{   
+    1f0f:	55                   	push   %rbp
+    1f10:	48 89 e5             	mov    %rsp,%rbp
+    1f13:	48 83 ec 30          	sub    $0x30,%rsp
+    1f17:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    1f1b:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    1f1f:	48 89 55 d8          	mov    %rdx,-0x28(%rbp)
+    char* translation = nullptr;
+    1f23:	48 c7 45 f8 00 00 00 	movq   $0x0,-0x8(%rbp)
+    1f2a:	00 
+    char* current_word = strtok(sentence, " .,!?;:\n\t");
+    1f2b:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1f2f:	48 8d 35 58 11 00 00 	lea    0x1158(%rip),%rsi        # 308e <_ZL1b+0x3e>
+    1f36:	48 89 c7             	mov    %rax,%rdi
+    1f39:	e8 02 f2 ff ff       	call   1140 <strtok@plt>
+    1f3e:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+    
+    while (current_word != nullptr)
+    1f42:	48 83 7d f0 00       	cmpq   $0x0,-0x10(%rbp)
+    1f47:	0f 84 88 00 00 00    	je     1fd5 <_Z17translateSentenceP10DictionaryPcP8_IO_FILE+0xc6>
+    {   
+        fprintf(output, "%s: ", current_word);
+    1f4d:	48 8b 55 f0          	mov    -0x10(%rbp),%rdx
+    1f51:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    1f55:	48 8d 35 3c 11 00 00 	lea    0x113c(%rip),%rsi        # 3098 <_ZL1b+0x48>
+    1f5c:	48 89 c7             	mov    %rax,%rdi
+    1f5f:	b8 00 00 00 00       	mov    $0x0,%eax
+    1f64:	e8 77 f1 ff ff       	call   10e0 <fprintf@plt>
+        toLower(current_word);
+    1f69:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    1f6d:	48 89 c7             	mov    %rax,%rdi
+    1f70:	e8 55 06 00 00       	call   25ca <_Z7toLowerPc>
+        translation = getTranslation(dict, current_word);
+    1f75:	48 8b 55 f0          	mov    -0x10(%rbp),%rdx
+    1f79:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1f7d:	48 89 d6             	mov    %rdx,%rsi
+    1f80:	48 89 c7             	mov    %rax,%rdi
+    1f83:	e8 76 05 00 00       	call   24fe <_Z14getTranslationP10DictionaryPc>
+    1f88:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+
+        fprintf(output, "%s\n", translation != nullptr ? 
+    1f8c:	48 83 7d f8 00       	cmpq   $0x0,-0x8(%rbp)
+    1f91:	74 06                	je     1f99 <_Z17translateSentenceP10DictionaryPcP8_IO_FILE+0x8a>
+    1f93:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1f97:	eb 07                	jmp    1fa0 <_Z17translateSentenceP10DictionaryPcP8_IO_FILE+0x91>
+    1f99:	48 8d 05 fd 10 00 00 	lea    0x10fd(%rip),%rax        # 309d <_ZL1b+0x4d>
+    1fa0:	48 8b 4d d8          	mov    -0x28(%rbp),%rcx
+    1fa4:	48 89 c2             	mov    %rax,%rdx
+    1fa7:	48 8d 35 fb 10 00 00 	lea    0x10fb(%rip),%rsi        # 30a9 <_ZL1b+0x59>
+    1fae:	48 89 cf             	mov    %rcx,%rdi
+    1fb1:	b8 00 00 00 00       	mov    $0x0,%eax
+    1fb6:	e8 25 f1 ff ff       	call   10e0 <fprintf@plt>
+                                translation : "(not found)");
+
+        current_word = strtok(nullptr, " .,!?;:\n\t");
+    1fbb:	48 8d 35 cc 10 00 00 	lea    0x10cc(%rip),%rsi        # 308e <_ZL1b+0x3e>
+    1fc2:	bf 00 00 00 00       	mov    $0x0,%edi
+    1fc7:	e8 74 f1 ff ff       	call   1140 <strtok@plt>
+    1fcc:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+    while (current_word != nullptr)
+    1fd0:	e9 6d ff ff ff       	jmp    1f42 <_Z17translateSentenceP10DictionaryPcP8_IO_FILE+0x33>
+    }
+}
+    1fd5:	90                   	nop
+    1fd6:	c9                   	leave  
+    1fd7:	c3                   	ret    
+
+0000000000001fd8 <_Z17writeHTMLPrologueP8_IO_FILEPKc>:
+
+void writeHTMLPrologue(FILE* html_file, const char* filename)
+{
+    1fd8:	55                   	push   %rbp
+    1fd9:	48 89 e5             	mov    %rsp,%rbp
+    1fdc:	48 83 ec 10          	sub    $0x10,%rsp
+    1fe0:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    1fe4:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+    fprintf(html_file, "<head>\n");
+    1fe8:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1fec:	48 89 c1             	mov    %rax,%rcx
+    1fef:	ba 07 00 00 00       	mov    $0x7,%edx
+    1ff4:	be 01 00 00 00       	mov    $0x1,%esi
+    1ff9:	48 8d 3d ad 10 00 00 	lea    0x10ad(%rip),%rdi        # 30ad <_ZL1b+0x5d>
+    2000:	e8 4b f1 ff ff       	call   1150 <fwrite@plt>
+    fprintf(html_file, "<meta charset=\"utf-8\">");
+    2005:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    2009:	48 89 c1             	mov    %rax,%rcx
+    200c:	ba 16 00 00 00       	mov    $0x16,%edx
+    2011:	be 01 00 00 00       	mov    $0x1,%esi
+    2016:	48 8d 3d 98 10 00 00 	lea    0x1098(%rip),%rdi        # 30b5 <_ZL1b+0x65>
+    201d:	e8 2e f1 ff ff       	call   1150 <fwrite@plt>
+    fprintf(html_file, "<title> %s file translation </title>\n", filename);
+    2022:	48 8b 55 f0          	mov    -0x10(%rbp),%rdx
+    2026:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    202a:	48 8d 35 9f 10 00 00 	lea    0x109f(%rip),%rsi        # 30d0 <_ZL1b+0x80>
+    2031:	48 89 c7             	mov    %rax,%rdi
+    2034:	b8 00 00 00 00       	mov    $0x0,%eax
+    2039:	e8 a2 f0 ff ff       	call   10e0 <fprintf@plt>
+    fprintf(html_file, "</head>\n");
+    203e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    2042:	48 89 c1             	mov    %rax,%rcx
+    2045:	ba 08 00 00 00       	mov    $0x8,%edx
+    204a:	be 01 00 00 00       	mov    $0x1,%esi
+    204f:	48 8d 3d a0 10 00 00 	lea    0x10a0(%rip),%rdi        # 30f6 <_ZL1b+0xa6>
+    2056:	e8 f5 f0 ff ff       	call   1150 <fwrite@plt>
+}
+    205b:	90                   	nop
+    205c:	c9                   	leave  
+    205d:	c3                   	ret    
+
+000000000000205e <_Z16writeTranslationP10DictionaryP10TokenArrayP8_IO_FILE>:
+
+void writeTranslation(Dictionary* dict, TokenArray* tokens, FILE* translation)
+{   
+    205e:	55                   	push   %rbp
+    205f:	48 89 e5             	mov    %rsp,%rbp
+    2062:	48 81 ec d0 00 00 00 	sub    $0xd0,%rsp
+    2069:	48 89 bd 48 ff ff ff 	mov    %rdi,-0xb8(%rbp)
+    2070:	48 89 b5 40 ff ff ff 	mov    %rsi,-0xc0(%rbp)
+    2077:	48 89 95 38 ff ff ff 	mov    %rdx,-0xc8(%rbp)
+    207e:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    2085:	00 00 
+    2087:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    208b:	31 c0                	xor    %eax,%eax
+    char copied_word[128] = {};
+    208d:	48 c7 85 70 ff ff ff 	movq   $0x0,-0x90(%rbp)
+    2094:	00 00 00 00 
+    2098:	48 c7 85 78 ff ff ff 	movq   $0x0,-0x88(%rbp)
+    209f:	00 00 00 00 
+    20a3:	48 c7 45 80 00 00 00 	movq   $0x0,-0x80(%rbp)
+    20aa:	00 
+    20ab:	48 c7 45 88 00 00 00 	movq   $0x0,-0x78(%rbp)
+    20b2:	00 
+    20b3:	48 c7 45 90 00 00 00 	movq   $0x0,-0x70(%rbp)
+    20ba:	00 
+    20bb:	48 c7 45 98 00 00 00 	movq   $0x0,-0x68(%rbp)
+    20c2:	00 
+    20c3:	48 c7 45 a0 00 00 00 	movq   $0x0,-0x60(%rbp)
+    20ca:	00 
+    20cb:	48 c7 45 a8 00 00 00 	movq   $0x0,-0x58(%rbp)
+    20d2:	00 
+    20d3:	48 c7 45 b0 00 00 00 	movq   $0x0,-0x50(%rbp)
+    20da:	00 
+    20db:	48 c7 45 b8 00 00 00 	movq   $0x0,-0x48(%rbp)
+    20e2:	00 
+    20e3:	48 c7 45 c0 00 00 00 	movq   $0x0,-0x40(%rbp)
+    20ea:	00 
+    20eb:	48 c7 45 c8 00 00 00 	movq   $0x0,-0x38(%rbp)
+    20f2:	00 
+    20f3:	48 c7 45 d0 00 00 00 	movq   $0x0,-0x30(%rbp)
+    20fa:	00 
+    20fb:	48 c7 45 d8 00 00 00 	movq   $0x0,-0x28(%rbp)
+    2102:	00 
+    2103:	48 c7 45 e0 00 00 00 	movq   $0x0,-0x20(%rbp)
+    210a:	00 
+    210b:	48 c7 45 e8 00 00 00 	movq   $0x0,-0x18(%rbp)
+    2112:	00 
+    char* current_word = nullptr;
+    2113:	48 c7 85 60 ff ff ff 	movq   $0x0,-0xa0(%rbp)
+    211a:	00 00 00 00 
+    char* translated_word = nullptr;
+    211e:	48 c7 85 68 ff ff ff 	movq   $0x0,-0x98(%rbp)
+    2125:	00 00 00 00 
+
+    fprintf(translation, "<p>");
+    2129:	48 8b 85 38 ff ff ff 	mov    -0xc8(%rbp),%rax
+    2130:	48 89 c1             	mov    %rax,%rcx
+    2133:	ba 03 00 00 00       	mov    $0x3,%edx
+    2138:	be 01 00 00 00       	mov    $0x1,%esi
+    213d:	48 8d 3d bb 0f 00 00 	lea    0xfbb(%rip),%rdi        # 30ff <_ZL1b+0xaf>
+    2144:	e8 07 f0 ff ff       	call   1150 <fwrite@plt>
+    for (size_t i = 0; i < tokens->size; ++i)
+    2149:	48 c7 85 58 ff ff ff 	movq   $0x0,-0xa8(%rbp)
+    2150:	00 00 00 00 
+    2154:	48 8b 85 40 ff ff ff 	mov    -0xc0(%rbp),%rax
+    215b:	48 8b 40 08          	mov    0x8(%rax),%rax
+    215f:	48 39 85 58 ff ff ff 	cmp    %rax,-0xa8(%rbp)
+    2166:	0f 83 7f 01 00 00    	jae    22eb <_Z16writeTranslationP10DictionaryP10TokenArrayP8_IO_FILE+0x28d>
+    {   
+        switch (tokens->data[i].type)
+    216c:	48 8b 85 40 ff ff ff 	mov    -0xc0(%rbp),%rax
+    2173:	48 8b 10             	mov    (%rax),%rdx
+    2176:	48 8b 85 58 ff ff ff 	mov    -0xa8(%rbp),%rax
+    217d:	48 c1 e0 04          	shl    $0x4,%rax
+    2181:	48 01 d0             	add    %rdx,%rax
+    2184:	8b 00                	mov    (%rax),%eax
+    2186:	83 f8 05             	cmp    $0x5,%eax
+    2189:	0f 84 d0 00 00 00    	je     225f <_Z16writeTranslationP10DictionaryP10TokenArrayP8_IO_FILE+0x201>
+    218f:	83 f8 09             	cmp    $0x9,%eax
+    2192:	0f 85 09 01 00 00    	jne    22a1 <_Z16writeTranslationP10DictionaryP10TokenArrayP8_IO_FILE+0x243>
+        {
+            case WORD:
+                current_word = tokens->data[i].lexeme;
+    2198:	48 8b 85 40 ff ff ff 	mov    -0xc0(%rbp),%rax
+    219f:	48 8b 10             	mov    (%rax),%rdx
+    21a2:	48 8b 85 58 ff ff ff 	mov    -0xa8(%rbp),%rax
+    21a9:	48 c1 e0 04          	shl    $0x4,%rax
+    21ad:	48 01 d0             	add    %rdx,%rax
+    21b0:	48 8b 40 08          	mov    0x8(%rax),%rax
+    21b4:	48 89 85 60 ff ff ff 	mov    %rax,-0xa0(%rbp)
+
+                strcpy(copied_word, current_word); //| без этого не обойтись, так как 
+    21bb:	48 8b 95 60 ff ff ff 	mov    -0xa0(%rbp),%rdx
+    21c2:	48 8d 85 70 ff ff ff 	lea    -0x90(%rbp),%rax
+    21c9:	48 89 d6             	mov    %rdx,%rsi
+    21cc:	48 89 c7             	mov    %rax,%rdi
+    21cf:	e8 6c ee ff ff       	call   1040 <strcpy@plt>
+                toLower(copied_word);              //| подсчёт хеш-суммы регистрозависимый
+    21d4:	48 8d 85 70 ff ff ff 	lea    -0x90(%rbp),%rax
+    21db:	48 89 c7             	mov    %rax,%rdi
+    21de:	e8 e7 03 00 00       	call   25ca <_Z7toLowerPc>
+                translated_word = getTranslation(dict, copied_word);
+    21e3:	48 8d 95 70 ff ff ff 	lea    -0x90(%rbp),%rdx
+    21ea:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+    21f1:	48 89 d6             	mov    %rdx,%rsi
+    21f4:	48 89 c7             	mov    %rax,%rdi
+    21f7:	e8 02 03 00 00       	call   24fe <_Z14getTranslationP10DictionaryPc>
+    21fc:	48 89 85 68 ff ff ff 	mov    %rax,-0x98(%rbp)
+
+                fprintf(translation, "<text title=\"%s\">", translated_word != nullptr ? 
+    2203:	48 83 bd 68 ff ff ff 	cmpq   $0x0,-0x98(%rbp)
+    220a:	00 
+    220b:	74 09                	je     2216 <_Z16writeTranslationP10DictionaryP10TokenArrayP8_IO_FILE+0x1b8>
+    220d:	48 8b 85 68 ff ff ff 	mov    -0x98(%rbp),%rax
+    2214:	eb 07                	jmp    221d <_Z16writeTranslationP10DictionaryP10TokenArrayP8_IO_FILE+0x1bf>
+    2216:	48 8d 05 80 0e 00 00 	lea    0xe80(%rip),%rax        # 309d <_ZL1b+0x4d>
+    221d:	48 8b 8d 38 ff ff ff 	mov    -0xc8(%rbp),%rcx
+    2224:	48 89 c2             	mov    %rax,%rdx
+    2227:	48 8d 35 d5 0e 00 00 	lea    0xed5(%rip),%rsi        # 3103 <_ZL1b+0xb3>
+    222e:	48 89 cf             	mov    %rcx,%rdi
+    2231:	b8 00 00 00 00       	mov    $0x0,%eax
+    2236:	e8 a5 ee ff ff       	call   10e0 <fprintf@plt>
+                                                            translated_word : "(not found)");
+                fprintf(translation, "%s\n</text>\n", current_word);
+    223b:	48 8b 95 60 ff ff ff 	mov    -0xa0(%rbp),%rdx
+    2242:	48 8b 85 38 ff ff ff 	mov    -0xc8(%rbp),%rax
+    2249:	48 8d 35 c5 0e 00 00 	lea    0xec5(%rip),%rsi        # 3115 <_ZL1b+0xc5>
+    2250:	48 89 c7             	mov    %rax,%rdi
+    2253:	b8 00 00 00 00       	mov    $0x0,%eax
+    2258:	e8 83 ee ff ff       	call   10e0 <fprintf@plt>
+
+                break;
+    225d:	eb 7f                	jmp    22de <_Z16writeTranslationP10DictionaryP10TokenArrayP8_IO_FILE+0x280>
+    
+            case NEW_LINE:
+                fprintf(translation, "</p>");
+    225f:	48 8b 85 38 ff ff ff 	mov    -0xc8(%rbp),%rax
+    2266:	48 89 c1             	mov    %rax,%rcx
+    2269:	ba 04 00 00 00       	mov    $0x4,%edx
+    226e:	be 01 00 00 00       	mov    $0x1,%esi
+    2273:	48 8d 3d a7 0e 00 00 	lea    0xea7(%rip),%rdi        # 3121 <_ZL1b+0xd1>
+    227a:	e8 d1 ee ff ff       	call   1150 <fwrite@plt>
+                fprintf(translation, "<p>");
+    227f:	48 8b 85 38 ff ff ff 	mov    -0xc8(%rbp),%rax
+    2286:	48 89 c1             	mov    %rax,%rcx
+    2289:	ba 03 00 00 00       	mov    $0x3,%edx
+    228e:	be 01 00 00 00       	mov    $0x1,%esi
+    2293:	48 8d 3d 65 0e 00 00 	lea    0xe65(%rip),%rdi        # 30ff <_ZL1b+0xaf>
+    229a:	e8 b1 ee ff ff       	call   1150 <fwrite@plt>
+                break;
+    229f:	eb 3d                	jmp    22de <_Z16writeTranslationP10DictionaryP10TokenArrayP8_IO_FILE+0x280>
+    
+            default:
+                fprintf(translation, "%c", punct_marks[tokens->data[i].type]);
+    22a1:	48 8b 15 20 2e 00 00 	mov    0x2e20(%rip),%rdx        # 50c8 <punct_marks>
+    22a8:	48 8b 85 40 ff ff ff 	mov    -0xc0(%rbp),%rax
+    22af:	48 8b 08             	mov    (%rax),%rcx
+    22b2:	48 8b 85 58 ff ff ff 	mov    -0xa8(%rbp),%rax
+    22b9:	48 c1 e0 04          	shl    $0x4,%rax
+    22bd:	48 01 c8             	add    %rcx,%rax
+    22c0:	8b 00                	mov    (%rax),%eax
+    22c2:	48 98                	cltq   
+    22c4:	48 01 d0             	add    %rdx,%rax
+    22c7:	0f b6 00             	movzbl (%rax),%eax
+    22ca:	0f be c0             	movsbl %al,%eax
+    22cd:	48 8b 95 38 ff ff ff 	mov    -0xc8(%rbp),%rdx
+    22d4:	48 89 d6             	mov    %rdx,%rsi
+    22d7:	89 c7                	mov    %eax,%edi
+    22d9:	e8 d2 ed ff ff       	call   10b0 <fputc@plt>
+    for (size_t i = 0; i < tokens->size; ++i)
+    22de:	48 83 85 58 ff ff ff 	addq   $0x1,-0xa8(%rbp)
+    22e5:	01 
+    22e6:	e9 69 fe ff ff       	jmp    2154 <_Z16writeTranslationP10DictionaryP10TokenArrayP8_IO_FILE+0xf6>
+        }
+    }
+    fprintf(translation, "</p>");
+    22eb:	48 8b 85 38 ff ff ff 	mov    -0xc8(%rbp),%rax
+    22f2:	48 89 c1             	mov    %rax,%rcx
+    22f5:	ba 04 00 00 00       	mov    $0x4,%edx
+    22fa:	be 01 00 00 00       	mov    $0x1,%esi
+    22ff:	48 8d 3d 1b 0e 00 00 	lea    0xe1b(%rip),%rdi        # 3121 <_ZL1b+0xd1>
+    2306:	e8 45 ee ff ff       	call   1150 <fwrite@plt>
+}
+    230b:	90                   	nop
+    230c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    2310:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    2317:	00 00 
+    2319:	74 05                	je     2320 <_Z16writeTranslationP10DictionaryP10TokenArrayP8_IO_FILE+0x2c2>
+    231b:	e8 60 ed ff ff       	call   1080 <__stack_chk_fail@plt>
+    2320:	c9                   	leave  
+    2321:	c3                   	ret    
+
+0000000000002322 <_Z13translateFilePKcS0_>:
+
+void translateFile(const char* filename, const char* translated_file)
+{
+    2322:	55                   	push   %rbp
+    2323:	48 89 e5             	mov    %rsp,%rbp
+    2326:	48 83 ec 60          	sub    $0x60,%rsp
+    232a:	48 89 7d a8          	mov    %rdi,-0x58(%rbp)
+    232e:	48 89 75 a0          	mov    %rsi,-0x60(%rbp)
+    2332:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    2339:	00 00 
+    233b:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    233f:	31 c0                	xor    %eax,%eax
+    Dictionary dict = {};
+    2341:	48 c7 45 c0 00 00 00 	movq   $0x0,-0x40(%rbp)
+    2348:	00 
+    2349:	48 c7 45 c8 00 00 00 	movq   $0x0,-0x38(%rbp)
+    2350:	00 
+    TokenArray tokens = {};
+    2351:	48 c7 45 d0 00 00 00 	movq   $0x0,-0x30(%rbp)
+    2358:	00 
+    2359:	48 c7 45 d8 00 00 00 	movq   $0x0,-0x28(%rbp)
+    2360:	00 
+    2361:	48 c7 45 e0 00 00 00 	movq   $0x0,-0x20(%rbp)
+    2368:	00 
+    2369:	48 c7 45 e8 00 00 00 	movq   $0x0,-0x18(%rbp)
+    2370:	00 
+    constructDictionary(&dict, "res/dict.txt");
+    2371:	48 8d 45 c0          	lea    -0x40(%rbp),%rax
+    2375:	48 8d 35 aa 0d 00 00 	lea    0xdaa(%rip),%rsi        # 3126 <_ZL1b+0xd6>
+    237c:	48 89 c7             	mov    %rax,%rdi
+    237f:	e8 0d fb ff ff       	call   1e91 <_Z19constructDictionaryP10DictionaryPKc>
+    constructTokenArray(&tokens, filename);
+    2384:	48 8b 55 a8          	mov    -0x58(%rbp),%rdx
+    2388:	48 8d 45 d0          	lea    -0x30(%rbp),%rax
+    238c:	48 89 d6             	mov    %rdx,%rsi
+    238f:	48 89 c7             	mov    %rax,%rdi
+    2392:	e8 a3 03 00 00       	call   273a <_Z19constructTokenArrayP10TokenArrayPKc>
+
+    FILE* translation = fopen(translated_file, "w");
+    2397:	48 8b 45 a0          	mov    -0x60(%rbp),%rax
+    239b:	48 8d 35 c0 0c 00 00 	lea    0xcc0(%rip),%rsi        # 3062 <_ZL1b+0x12>
+    23a2:	48 89 c7             	mov    %rax,%rdi
+    23a5:	e8 86 ed ff ff       	call   1130 <fopen@plt>
+    23aa:	48 89 45 b8          	mov    %rax,-0x48(%rbp)
+
+    fprintf(translation, "<html5>\n");
+    23ae:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    23b2:	48 89 c1             	mov    %rax,%rcx
+    23b5:	ba 08 00 00 00       	mov    $0x8,%edx
+    23ba:	be 01 00 00 00       	mov    $0x1,%esi
+    23bf:	48 8d 3d 6d 0d 00 00 	lea    0xd6d(%rip),%rdi        # 3133 <_ZL1b+0xe3>
+    23c6:	e8 85 ed ff ff       	call   1150 <fwrite@plt>
+
+    writeHTMLPrologue(translation, filename);
+    23cb:	48 8b 55 a8          	mov    -0x58(%rbp),%rdx
+    23cf:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    23d3:	48 89 d6             	mov    %rdx,%rsi
+    23d6:	48 89 c7             	mov    %rax,%rdi
+    23d9:	e8 fa fb ff ff       	call   1fd8 <_Z17writeHTMLPrologueP8_IO_FILEPKc>
+
+    fprintf(translation, "<body>\n");
+    23de:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    23e2:	48 89 c1             	mov    %rax,%rcx
+    23e5:	ba 07 00 00 00       	mov    $0x7,%edx
+    23ea:	be 01 00 00 00       	mov    $0x1,%esi
+    23ef:	48 8d 3d 46 0d 00 00 	lea    0xd46(%rip),%rdi        # 313c <_ZL1b+0xec>
+    23f6:	e8 55 ed ff ff       	call   1150 <fwrite@plt>
+    fprintf(translation, "<p>\n");
+    23fb:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    23ff:	48 89 c1             	mov    %rax,%rcx
+    2402:	ba 04 00 00 00       	mov    $0x4,%edx
+    2407:	be 01 00 00 00       	mov    $0x1,%esi
+    240c:	48 8d 3d 31 0d 00 00 	lea    0xd31(%rip),%rdi        # 3144 <_ZL1b+0xf4>
+    2413:	e8 38 ed ff ff       	call   1150 <fwrite@plt>
+    writeTranslation(&dict, &tokens, translation);
+    2418:	48 8b 55 b8          	mov    -0x48(%rbp),%rdx
+    241c:	48 8d 4d d0          	lea    -0x30(%rbp),%rcx
+    2420:	48 8d 45 c0          	lea    -0x40(%rbp),%rax
+    2424:	48 89 ce             	mov    %rcx,%rsi
+    2427:	48 89 c7             	mov    %rax,%rdi
+    242a:	e8 2f fc ff ff       	call   205e <_Z16writeTranslationP10DictionaryP10TokenArrayP8_IO_FILE>
+
+    fprintf(translation, "</p>\n");
+    242f:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    2433:	48 89 c1             	mov    %rax,%rcx
+    2436:	ba 05 00 00 00       	mov    $0x5,%edx
+    243b:	be 01 00 00 00       	mov    $0x1,%esi
+    2440:	48 8d 3d 02 0d 00 00 	lea    0xd02(%rip),%rdi        # 3149 <_ZL1b+0xf9>
+    2447:	e8 04 ed ff ff       	call   1150 <fwrite@plt>
+    fprintf(translation, "</body>\n");
+    244c:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    2450:	48 89 c1             	mov    %rax,%rcx
+    2453:	ba 08 00 00 00       	mov    $0x8,%edx
+    2458:	be 01 00 00 00       	mov    $0x1,%esi
+    245d:	48 8d 3d eb 0c 00 00 	lea    0xceb(%rip),%rdi        # 314f <_ZL1b+0xff>
+    2464:	e8 e7 ec ff ff       	call   1150 <fwrite@plt>
+    fprintf(translation, "</html5>\n");
+    2469:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    246d:	48 89 c1             	mov    %rax,%rcx
+    2470:	ba 09 00 00 00       	mov    $0x9,%edx
+    2475:	be 01 00 00 00       	mov    $0x1,%esi
+    247a:	48 8d 3d d7 0c 00 00 	lea    0xcd7(%rip),%rdi        # 3158 <_ZL1b+0x108>
+    2481:	e8 ca ec ff ff       	call   1150 <fwrite@plt>
+
+    destructDictionary(&dict);
+    2486:	48 8d 45 c0          	lea    -0x40(%rbp),%rax
+    248a:	48 89 c7             	mov    %rax,%rdi
+    248d:	e8 2f 00 00 00       	call   24c1 <_Z18destructDictionaryP10Dictionary>
+    destructTokenArray(&tokens);
+    2492:	48 8d 45 d0          	lea    -0x30(%rbp),%rax
+    2496:	48 89 c7             	mov    %rax,%rdi
+    2499:	e8 95 04 00 00       	call   2933 <_Z18destructTokenArrayP10TokenArray>
+    fclose(translation);
+    249e:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    24a2:	48 89 c7             	mov    %rax,%rdi
+    24a5:	e8 b6 eb ff ff       	call   1060 <fclose@plt>
+}
+    24aa:	90                   	nop
+    24ab:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    24af:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    24b6:	00 00 
+    24b8:	74 05                	je     24bf <_Z13translateFilePKcS0_+0x19d>
+    24ba:	e8 c1 eb ff ff       	call   1080 <__stack_chk_fail@plt>
+    24bf:	c9                   	leave  
+    24c0:	c3                   	ret    
+
+00000000000024c1 <_Z18destructDictionaryP10Dictionary>:
+
+void destructDictionary(Dictionary* dict)
+{
+    24c1:	55                   	push   %rbp
+    24c2:	48 89 e5             	mov    %rsp,%rbp
+    24c5:	48 83 ec 10          	sub    $0x10,%rsp
+    24c9:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    destructHashTable(dict->table);
+    24cd:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    24d1:	48 8b 00             	mov    (%rax),%rax
+    24d4:	48 89 c7             	mov    %rax,%rdi
+    24d7:	e8 7c f1 ff ff       	call   1658 <_Z17destructHashTableP9HashTable>
+
+    free(dict->table);
+    24dc:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    24e0:	48 8b 00             	mov    (%rax),%rax
+    24e3:	48 89 c7             	mov    %rax,%rdi
+    24e6:	e8 45 eb ff ff       	call   1030 <free@plt>
+    free(dict->buffer);
+    24eb:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    24ef:	48 8b 40 08          	mov    0x8(%rax),%rax
+    24f3:	48 89 c7             	mov    %rax,%rdi
+    24f6:	e8 35 eb ff ff       	call   1030 <free@plt>
+}
+    24fb:	90                   	nop
+    24fc:	c9                   	leave  
+    24fd:	c3                   	ret    
+
+00000000000024fe <_Z14getTranslationP10DictionaryPc>:
+
+char* getTranslation(Dictionary* dict, char* word)
+{
+    24fe:	55                   	push   %rbp
+    24ff:	48 89 e5             	mov    %rsp,%rbp
+    2502:	48 83 ec 40          	sub    $0x40,%rsp
+    2506:	48 89 7d c8          	mov    %rdi,-0x38(%rbp)
+    250a:	48 89 75 c0          	mov    %rsi,-0x40(%rbp)
+    250e:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    2515:	00 00 
+    2517:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    251b:	31 c0                	xor    %eax,%eax
+    Element target_translation = {word, nullptr};
+    251d:	48 c7 45 e0 00 00 00 	movq   $0x0,-0x20(%rbp)
+    2524:	00 
+    2525:	48 c7 45 e8 00 00 00 	movq   $0x0,-0x18(%rbp)
+    252c:	00 
+    252d:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    2531:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+    Element* result_translation = findHashTable(dict->table, 
+    2535:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+    2539:	48 8b 00             	mov    (%rax),%rax
+    253c:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+    2540:	48 89 d6             	mov    %rdx,%rsi
+    2543:	48 89 c7             	mov    %rax,%rdi
+    2546:	e8 9b f3 ff ff       	call   18e6 <_Z13findHashTableP9HashTableP7Element>
+    254b:	48 89 45 d8          	mov    %rax,-0x28(%rbp)
+                                                &target_translation);
+    
+    if (result_translation == nullptr) return nullptr;
+    254f:	48 83 7d d8 00       	cmpq   $0x0,-0x28(%rbp)
+    2554:	75 07                	jne    255d <_Z14getTranslationP10DictionaryPc+0x5f>
+    2556:	b8 00 00 00 00       	mov    $0x0,%eax
+    255b:	eb 08                	jmp    2565 <_Z14getTranslationP10DictionaryPc+0x67>
+    
+    return result_translation->value;
+    255d:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    2561:	48 8b 40 08          	mov    0x8(%rax),%rax
+    2565:	48 8b 4d f8          	mov    -0x8(%rbp),%rcx
+    2569:	64 48 2b 0c 25 28 00 	sub    %fs:0x28,%rcx
+    2570:	00 00 
+    2572:	74 05                	je     2579 <_Z14getTranslationP10DictionaryPc+0x7b>
+    2574:	e8 07 eb ff ff       	call   1080 <__stack_chk_fail@plt>
+    2579:	c9                   	leave  
+    257a:	c3                   	ret    
+
+000000000000257b <_Z19getPunctuactionMarkPc>:
+#include "../Array/Array.h"
+
+const char* punctuaction_marks = ".\t ,:\n?!;";
+
+TYPE getPunctuactionMark(char* symbol)
+{   
+    257b:	55                   	push   %rbp
+    257c:	48 89 e5             	mov    %rsp,%rbp
+    257f:	48 83 ec 20          	sub    $0x20,%rsp
+    2583:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    const char* found_symbol = strchr(punctuaction_marks, *symbol);
+    2587:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    258b:	0f b6 00             	movzbl (%rax),%eax
+    258e:	0f be d0             	movsbl %al,%edx
+    2591:	48 8b 05 38 2b 00 00 	mov    0x2b38(%rip),%rax        # 50d0 <punctuaction_marks>
+    2598:	89 d6                	mov    %edx,%esi
+    259a:	48 89 c7             	mov    %rax,%rdi
+    259d:	e8 ee ea ff ff       	call   1090 <strchr@plt>
+    25a2:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    TYPE result = (found_symbol == nullptr) ?  WORD : (TYPE)(found_symbol - punctuaction_marks);
+    25a6:	48 83 7d f8 00       	cmpq   $0x0,-0x8(%rbp)
+    25ab:	74 10                	je     25bd <_Z19getPunctuactionMarkPc+0x42>
+    25ad:	48 8b 15 1c 2b 00 00 	mov    0x2b1c(%rip),%rdx        # 50d0 <punctuaction_marks>
+    25b4:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    25b8:	48 29 d0             	sub    %rdx,%rax
+    25bb:	eb 05                	jmp    25c2 <_Z19getPunctuactionMarkPc+0x47>
+    25bd:	b8 09 00 00 00       	mov    $0x9,%eax
+    25c2:	89 45 f4             	mov    %eax,-0xc(%rbp)
+
+    return result;
+    25c5:	8b 45 f4             	mov    -0xc(%rbp),%eax
+}
+    25c8:	c9                   	leave  
+    25c9:	c3                   	ret    
+
+00000000000025ca <_Z7toLowerPc>:
+
+void toLower(char* string)
+{
+    25ca:	55                   	push   %rbp
+    25cb:	48 89 e5             	mov    %rsp,%rbp
+    25ce:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    //     "jmp    .continueLoop\n"
+    // ".End:\n"
+    //     "popq   %rbx\n"
+    //     "ret\n"   
+    // );
+    __asm__
+    25d2:	57                   	push   %rdi
+    25d3:	53                   	push   %rbx
+    25d4:	48 89 fb             	mov    %rdi,%rbx
+    25d7:	0f be 3f             	movsbl (%rdi),%edi
+    25da:	40 84 ff             	test   %dil,%dil
+    25dd:	74 17                	je     25f6 <.End>
+    25df:	0f 1f 00             	nopl   (%rax)
+
+00000000000025e2 <.Continue>:
+    25e2:	e8 19 eb ff ff       	call   1100 <tolower@plt>
+    25e7:	48 83 c3 01          	add    $0x1,%rbx
+    25eb:	88 43 ff             	mov    %al,-0x1(%rbx)
+    25ee:	0f be 3b             	movsbl (%rbx),%edi
+    25f1:	40 84 ff             	test   %dil,%dil
+    25f4:	75 ec                	jne    25e2 <.Continue>
+
+00000000000025f6 <.End>:
+    25f6:	5b                   	pop    %rbx
+    25f7:	5f                   	pop    %rdi
+    25f8:	c3                   	ret    
+    ".End:\n"
+        "pop    %rbx\n"
+        "pop    %rdi\n"
+        "ret\n"
+    );
+}
+    25f9:	90                   	nop
+    25fa:	5d                   	pop    %rbp
+    25fb:	c3                   	ret    
+
+00000000000025fc <_Z12approxLengthPKc>:
+
+int approxLength(const char* filename)
+{	
+    25fc:	55                   	push   %rbp
+    25fd:	48 89 e5             	mov    %rsp,%rbp
+    2600:	48 83 ec 20          	sub    $0x20,%rsp
+    2604:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+	struct stat* buff = (struct stat*)calloc(1, sizeof(struct stat));
+    2608:	be 90 00 00 00       	mov    $0x90,%esi
+    260d:	bf 01 00 00 00       	mov    $0x1,%edi
+    2612:	e8 a9 ea ff ff       	call   10c0 <calloc@plt>
+    2617:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+
+	stat(filename, buff);
+    261b:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+    261f:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    2623:	48 89 d6             	mov    %rdx,%rsi
+    2626:	48 89 c7             	mov    %rax,%rdi
+    2629:	e8 c2 ea ff ff       	call   10f0 <stat@plt>
+
+    int size = buff->st_size;
+    262e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    2632:	48 8b 40 30          	mov    0x30(%rax),%rax
+    2636:	89 45 f4             	mov    %eax,-0xc(%rbp)
+
+    free(buff);
+    2639:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    263d:	48 89 c7             	mov    %rax,%rdi
+    2640:	e8 eb e9 ff ff       	call   1030 <free@plt>
+
+	return size;
+    2645:	8b 45 f4             	mov    -0xc(%rbp),%eax
+}
+    2648:	c9                   	leave  
+    2649:	c3                   	ret    
+
+000000000000264a <_Z8readFilePKcPm>:
+
+char* readFile(const char* filename, size_t* buffer_size)
+{
+    264a:	55                   	push   %rbp
+    264b:	48 89 e5             	mov    %rsp,%rbp
+    264e:	48 83 ec 30          	sub    $0x30,%rsp
+    2652:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+    2656:	48 89 75 d0          	mov    %rsi,-0x30(%rbp)
+    FILE* file = fopen(filename, "r");
+    265a:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    265e:	48 8d 35 07 0b 00 00 	lea    0xb07(%rip),%rsi        # 316c <_ZL1b+0x11c>
+    2665:	48 89 c7             	mov    %rax,%rdi
+    2668:	e8 c3 ea ff ff       	call   1130 <fopen@plt>
+    266d:	48 89 45 e8          	mov    %rax,-0x18(%rbp)
+
+    if (file == nullptr) return nullptr;
+    2671:	48 83 7d e8 00       	cmpq   $0x0,-0x18(%rbp)
+    2676:	75 07                	jne    267f <_Z8readFilePKcPm+0x35>
+    2678:	b8 00 00 00 00       	mov    $0x0,%eax
+    267d:	eb 7f                	jmp    26fe <_Z8readFilePKcPm+0xb4>
+    
+    size_t apr_size = approxLength(filename);
+    267f:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    2683:	48 89 c7             	mov    %rax,%rdi
+    2686:	e8 71 ff ff ff       	call   25fc <_Z12approxLengthPKc>
+    268b:	48 98                	cltq   
+    268d:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+    char* buffer = (char*)calloc(apr_size, sizeof(char));
+    2691:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    2695:	be 01 00 00 00       	mov    $0x1,%esi
+    269a:	48 89 c7             	mov    %rax,%rdi
+    269d:	e8 1e ea ff ff       	call   10c0 <calloc@plt>
+    26a2:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    
+    apr_size =  fread(buffer, sizeof(char), apr_size, file);
+    26a6:	48 8b 4d e8          	mov    -0x18(%rbp),%rcx
+    26aa:	48 8b 55 f0          	mov    -0x10(%rbp),%rdx
+    26ae:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    26b2:	be 01 00 00 00       	mov    $0x1,%esi
+    26b7:	48 89 c7             	mov    %rax,%rdi
+    26ba:	e8 91 e9 ff ff       	call   1050 <fread@plt>
+    26bf:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+
+    if (buffer_size != nullptr) *buffer_size = apr_size;
+    26c3:	48 83 7d d0 00       	cmpq   $0x0,-0x30(%rbp)
+    26c8:	74 0b                	je     26d5 <_Z8readFilePKcPm+0x8b>
+    26ca:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+    26ce:	48 8b 55 f0          	mov    -0x10(%rbp),%rdx
+    26d2:	48 89 10             	mov    %rdx,(%rax)
+
+    if (buffer != nullptr) buffer[apr_size - 1] = '\0';
+    26d5:	48 83 7d f8 00       	cmpq   $0x0,-0x8(%rbp)
+    26da:	74 12                	je     26ee <_Z8readFilePKcPm+0xa4>
+    26dc:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    26e0:	48 8d 50 ff          	lea    -0x1(%rax),%rdx
+    26e4:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    26e8:	48 01 d0             	add    %rdx,%rax
+    26eb:	c6 00 00             	movb   $0x0,(%rax)
+
+    fclose(file);
+    26ee:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    26f2:	48 89 c7             	mov    %rax,%rdi
+    26f5:	e8 66 e9 ff ff       	call   1060 <fclose@plt>
+
+    return buffer;
+    26fa:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+}
+    26fe:	c9                   	leave  
+    26ff:	c3                   	ret    
+
+0000000000002700 <_Z19constructTokenArrayP10TokenArray>:
+
+void constructTokenArray(TokenArray* tokens)
+{
+    2700:	55                   	push   %rbp
+    2701:	48 89 e5             	mov    %rsp,%rbp
+    2704:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    tokens->size = 0;
+    2708:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    270c:	48 c7 40 08 00 00 00 	movq   $0x0,0x8(%rax)
+    2713:	00 
+    tokens->capacity = 0;
+    2714:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    2718:	48 c7 40 10 00 00 00 	movq   $0x0,0x10(%rax)
+    271f:	00 
+    tokens->data = nullptr;
+    2720:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    2724:	48 c7 00 00 00 00 00 	movq   $0x0,(%rax)
+    tokens->buffer = nullptr;
+    272b:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    272f:	48 c7 40 18 00 00 00 	movq   $0x0,0x18(%rax)
+    2736:	00 
+}
+    2737:	90                   	nop
+    2738:	5d                   	pop    %rbp
+    2739:	c3                   	ret    
+
+000000000000273a <_Z19constructTokenArrayP10TokenArrayPKc>:
+
+void constructTokenArray(TokenArray* tokens, const char* filename)
+{
+    273a:	55                   	push   %rbp
+    273b:	48 89 e5             	mov    %rsp,%rbp
+    273e:	41 57                	push   %r15
+    2740:	41 56                	push   %r14
+    2742:	41 55                	push   %r13
+    2744:	41 54                	push   %r12
+    2746:	53                   	push   %rbx
+    2747:	48 83 ec 28          	sub    $0x28,%rsp
+    274b:	48 89 7d b8          	mov    %rdi,-0x48(%rbp)
+    274f:	48 89 75 b0          	mov    %rsi,-0x50(%rbp)
+    constructTokenArray(tokens);
+    2753:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    2757:	48 89 c7             	mov    %rax,%rdi
+    275a:	e8 a1 ff ff ff       	call   2700 <_Z19constructTokenArrayP10TokenArray>
+
+    tokens->buffer = readFile(filename);
+    275f:	48 8b 45 b0          	mov    -0x50(%rbp),%rax
+    2763:	be 00 00 00 00       	mov    $0x0,%esi
+    2768:	48 89 c7             	mov    %rax,%rdi
+    276b:	e8 da fe ff ff       	call   264a <_Z8readFilePKcPm>
+    2770:	48 8b 55 b8          	mov    -0x48(%rbp),%rdx
+    2774:	48 89 42 18          	mov    %rax,0x18(%rdx)
+    
+    char* current_symbol = tokens->buffer;
+    2778:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    277c:	48 8b 40 18          	mov    0x18(%rax),%rax
+    2780:	48 89 45 c0          	mov    %rax,-0x40(%rbp)
+    char* punct_mark = nullptr;
+    2784:	48 c7 45 c8 00 00 00 	movq   $0x0,-0x38(%rbp)
+    278b:	00 
+    while (current_symbol != nullptr && *current_symbol != '\0') 
+    278c:	48 83 7d c0 00       	cmpq   $0x0,-0x40(%rbp)
+    2791:	0f 84 de 00 00 00    	je     2875 <_Z19constructTokenArrayP10TokenArrayPKc+0x13b>
+    2797:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    279b:	0f b6 00             	movzbl (%rax),%eax
+    279e:	84 c0                	test   %al,%al
+    27a0:	0f 84 cf 00 00 00    	je     2875 <_Z19constructTokenArrayP10TokenArrayPKc+0x13b>
+    {   
+        if (strchr(punctuaction_marks, *current_symbol) == nullptr)
+    27a6:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    27aa:	0f b6 00             	movzbl (%rax),%eax
+    27ad:	0f be d0             	movsbl %al,%edx
+    27b0:	48 8b 05 19 29 00 00 	mov    0x2919(%rip),%rax        # 50d0 <punctuaction_marks>
+    27b7:	89 d6                	mov    %edx,%esi
+    27b9:	48 89 c7             	mov    %rax,%rdi
+    27bc:	e8 cf e8 ff ff       	call   1090 <strchr@plt>
+    27c1:	48 85 c0             	test   %rax,%rax
+    27c4:	75 35                	jne    27fb <_Z19constructTokenArrayP10TokenArrayPKc+0xc1>
+        {
+            pushBackTokenArray(tokens, {WORD, current_symbol});
+    27c6:	4c 89 e2             	mov    %r12,%rdx
+    27c9:	48 b8 00 00 00 00 ff 	movabs $0xffffffff00000000,%rax
+    27d0:	ff ff ff 
+    27d3:	48 21 d0             	and    %rdx,%rax
+    27d6:	48 83 c8 09          	or     $0x9,%rax
+    27da:	49 89 c4             	mov    %rax,%r12
+    27dd:	4c 8b 6d c0          	mov    -0x40(%rbp),%r13
+    27e1:	4c 89 e1             	mov    %r12,%rcx
+    27e4:	4c 89 eb             	mov    %r13,%rbx
+    27e7:	4c 89 e0             	mov    %r12,%rax
+    27ea:	4c 89 ea             	mov    %r13,%rdx
+    27ed:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    27f1:	89 ce                	mov    %ecx,%esi
+    27f3:	48 89 c7             	mov    %rax,%rdi
+    27f6:	e8 8a 00 00 00       	call   2885 <_Z18pushBackTokenArrayP10TokenArray5Token>
+        }
+        current_symbol = strpbrk(current_symbol, punctuaction_marks);
+    27fb:	48 8b 15 ce 28 00 00 	mov    0x28ce(%rip),%rdx        # 50d0 <punctuaction_marks>
+    2802:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    2806:	48 89 d6             	mov    %rdx,%rsi
+    2809:	48 89 c7             	mov    %rax,%rdi
+    280c:	e8 ff e8 ff ff       	call   1110 <strpbrk@plt>
+    2811:	48 89 45 c0          	mov    %rax,-0x40(%rbp)
+        
+        if (current_symbol != nullptr)
+    2815:	48 83 7d c0 00       	cmpq   $0x0,-0x40(%rbp)
+    281a:	0f 84 6c ff ff ff    	je     278c <_Z19constructTokenArrayP10TokenArrayPKc+0x52>
+        {
+            pushBackTokenArray(tokens, {getPunctuactionMark(current_symbol), nullptr});
+    2820:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    2824:	48 89 c7             	mov    %rax,%rdi
+    2827:	e8 4f fd ff ff       	call   257b <_Z19getPunctuactionMarkPc>
+    282c:	89 c2                	mov    %eax,%edx
+    282e:	4c 89 f1             	mov    %r14,%rcx
+    2831:	48 b8 00 00 00 00 ff 	movabs $0xffffffff00000000,%rax
+    2838:	ff ff ff 
+    283b:	48 21 c8             	and    %rcx,%rax
+    283e:	48 09 d0             	or     %rdx,%rax
+    2841:	49 89 c6             	mov    %rax,%r14
+    2844:	41 bf 00 00 00 00    	mov    $0x0,%r15d
+    284a:	4c 89 f1             	mov    %r14,%rcx
+    284d:	4c 89 fb             	mov    %r15,%rbx
+    2850:	4c 89 f0             	mov    %r14,%rax
+    2853:	4c 89 fa             	mov    %r15,%rdx
+    2856:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    285a:	89 ce                	mov    %ecx,%esi
+    285c:	48 89 c7             	mov    %rax,%rdi
+    285f:	e8 21 00 00 00       	call   2885 <_Z18pushBackTokenArrayP10TokenArray5Token>
+            *current_symbol = '\0';
+    2864:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    2868:	c6 00 00             	movb   $0x0,(%rax)
+            ++current_symbol;
+    286b:	48 83 45 c0 01       	addq   $0x1,-0x40(%rbp)
+    while (current_symbol != nullptr && *current_symbol != '\0') 
+    2870:	e9 17 ff ff ff       	jmp    278c <_Z19constructTokenArrayP10TokenArrayPKc+0x52>
+        }
+    }
+}
+    2875:	90                   	nop
+    2876:	48 83 c4 28          	add    $0x28,%rsp
+    287a:	5b                   	pop    %rbx
+    287b:	41 5c                	pop    %r12
+    287d:	41 5d                	pop    %r13
+    287f:	41 5e                	pop    %r14
+    2881:	41 5f                	pop    %r15
+    2883:	5d                   	pop    %rbp
+    2884:	c3                   	ret    
+
+0000000000002885 <_Z18pushBackTokenArrayP10TokenArray5Token>:
+
+void pushBackTokenArray(TokenArray* tokens, Token token)
+{
+    2885:	55                   	push   %rbp
+    2886:	48 89 e5             	mov    %rsp,%rbp
+    2889:	48 83 ec 20          	sub    $0x20,%rsp
+    288d:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    2891:	48 89 d1             	mov    %rdx,%rcx
+    2894:	48 89 f0             	mov    %rsi,%rax
+    2897:	48 89 fa             	mov    %rdi,%rdx
+    289a:	48 89 ca             	mov    %rcx,%rdx
+    289d:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+    28a1:	48 89 55 e8          	mov    %rdx,-0x18(%rbp)
+    if (tokens->size + 1 > tokens->capacity)
+    28a5:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    28a9:	48 8b 40 08          	mov    0x8(%rax),%rax
+    28ad:	48 8d 50 01          	lea    0x1(%rax),%rdx
+    28b1:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    28b5:	48 8b 40 10          	mov    0x10(%rax),%rax
+    28b9:	48 39 c2             	cmp    %rax,%rdx
+    28bc:	76 40                	jbe    28fe <_Z18pushBackTokenArrayP10TokenArray5Token+0x79>
+    {
+        tokens->capacity = (tokens->capacity + 1) * 2;
+    28be:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    28c2:	48 8b 40 10          	mov    0x10(%rax),%rax
+    28c6:	48 83 c0 01          	add    $0x1,%rax
+    28ca:	48 8d 14 00          	lea    (%rax,%rax,1),%rdx
+    28ce:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    28d2:	48 89 50 10          	mov    %rdx,0x10(%rax)
+        tokens->data = (Token*)realloc(tokens->data, tokens->capacity * sizeof(Token));
+    28d6:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    28da:	48 8b 40 10          	mov    0x10(%rax),%rax
+    28de:	48 c1 e0 04          	shl    $0x4,%rax
+    28e2:	48 89 c2             	mov    %rax,%rdx
+    28e5:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    28e9:	48 8b 00             	mov    (%rax),%rax
+    28ec:	48 89 d6             	mov    %rdx,%rsi
+    28ef:	48 89 c7             	mov    %rax,%rdi
+    28f2:	e8 29 e8 ff ff       	call   1120 <realloc@plt>
+    28f7:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+    28fb:	48 89 02             	mov    %rax,(%rdx)
+    }
+    tokens->data[tokens->size++] = token;
+    28fe:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    2902:	48 8b 30             	mov    (%rax),%rsi
+    2905:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    2909:	48 8b 40 08          	mov    0x8(%rax),%rax
+    290d:	48 8d 48 01          	lea    0x1(%rax),%rcx
+    2911:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+    2915:	48 89 4a 08          	mov    %rcx,0x8(%rdx)
+    2919:	48 c1 e0 04          	shl    $0x4,%rax
+    291d:	48 8d 0c 06          	lea    (%rsi,%rax,1),%rcx
+    2921:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    2925:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+    2929:	48 89 01             	mov    %rax,(%rcx)
+    292c:	48 89 51 08          	mov    %rdx,0x8(%rcx)
+}
+    2930:	90                   	nop
+    2931:	c9                   	leave  
+    2932:	c3                   	ret    
+
+0000000000002933 <_Z18destructTokenArrayP10TokenArray>:
+
+void destructTokenArray(TokenArray* tokens)
+{
+    2933:	55                   	push   %rbp
+    2934:	48 89 e5             	mov    %rsp,%rbp
+    2937:	48 83 ec 10          	sub    $0x10,%rsp
+    293b:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    free(tokens->buffer);
+    293f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    2943:	48 8b 40 18          	mov    0x18(%rax),%rax
+    2947:	48 89 c7             	mov    %rax,%rdi
+    294a:	e8 e1 e6 ff ff       	call   1030 <free@plt>
+    free(tokens->data);
+    294f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    2953:	48 8b 00             	mov    (%rax),%rax
+    2956:	48 89 c7             	mov    %rax,%rdi
+    2959:	e8 d2 e6 ff ff       	call   1030 <free@plt>
+}
+    295e:	90                   	nop
+    295f:	c9                   	leave  
+    2960:	c3                   	ret    
+    2961:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    2968:	00 00 00 
+    296b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+
+0000000000002970 <__libc_csu_init>:
+    2970:	f3 0f 1e fa          	endbr64 
+    2974:	41 57                	push   %r15
+    2976:	4c 8d 3d 6b 24 00 00 	lea    0x246b(%rip),%r15        # 4de8 <__frame_dummy_init_array_entry>
+    297d:	41 56                	push   %r14
+    297f:	49 89 d6             	mov    %rdx,%r14
+    2982:	41 55                	push   %r13
+    2984:	49 89 f5             	mov    %rsi,%r13
+    2987:	41 54                	push   %r12
+    2989:	41 89 fc             	mov    %edi,%r12d
+    298c:	55                   	push   %rbp
+    298d:	48 8d 2d 5c 24 00 00 	lea    0x245c(%rip),%rbp        # 4df0 <__do_global_dtors_aux_fini_array_entry>
+    2994:	53                   	push   %rbx
+    2995:	4c 29 fd             	sub    %r15,%rbp
+    2998:	48 83 ec 08          	sub    $0x8,%rsp
+    299c:	e8 5f e6 ff ff       	call   1000 <_init>
+    29a1:	48 c1 fd 03          	sar    $0x3,%rbp
+    29a5:	74 1f                	je     29c6 <__libc_csu_init+0x56>
+    29a7:	31 db                	xor    %ebx,%ebx
+    29a9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    29b0:	4c 89 f2             	mov    %r14,%rdx
+    29b3:	4c 89 ee             	mov    %r13,%rsi
+    29b6:	44 89 e7             	mov    %r12d,%edi
+    29b9:	41 ff 14 df          	call   *(%r15,%rbx,8)
+    29bd:	48 83 c3 01          	add    $0x1,%rbx
+    29c1:	48 39 dd             	cmp    %rbx,%rbp
+    29c4:	75 ea                	jne    29b0 <__libc_csu_init+0x40>
+    29c6:	48 83 c4 08          	add    $0x8,%rsp
+    29ca:	5b                   	pop    %rbx
+    29cb:	5d                   	pop    %rbp
+    29cc:	41 5c                	pop    %r12
+    29ce:	41 5d                	pop    %r13
+    29d0:	41 5e                	pop    %r14
+    29d2:	41 5f                	pop    %r15
+    29d4:	c3                   	ret    
+    29d5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    29dc:	00 00 00 00 
+
+00000000000029e0 <__libc_csu_fini>:
+    29e0:	f3 0f 1e fa          	endbr64 
+    29e4:	c3                   	ret    
+
+Дизассемблирование раздела .fini:
+
+00000000000029e8 <_fini>:
+    29e8:	f3 0f 1e fa          	endbr64 
+    29ec:	48 83 ec 08          	sub    $0x8,%rsp
+    29f0:	48 83 c4 08          	add    $0x8,%rsp
+    29f4:	c3                   	ret    
