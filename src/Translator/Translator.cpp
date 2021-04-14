@@ -2,13 +2,13 @@
 #include "../Parser/Parser.h"
 #include <math.h>
 
-extern "C" size_t HolyPoly_asm(char* value, size_t module);
-
 size_t DEFAULT_SIZE = (size_t)64000;
 size_t AMOUNT_PASSES = 128;
 const char* punct_marks = ".\t ,:\n?!;";
 double tolower_sum_time = 0;
 double hash_sum_time = 0;
+
+extern "C" size_t HolyPoly_asm(char* value, size_t module);
 
 size_t OH_YEAH_MA_SENPAI_GO_ROR_ME(size_t rorable_number, size_t amount_rors)
 {
@@ -33,17 +33,6 @@ size_t HolyPoly(char* value, size_t module)
         accumulator *= prime_number;
     }
     return hash % module;
-}
-
-size_t HolyPoly_asm_test(char* value, size_t module)
-{   
-    double start = clock();
-
-    size_t hash = HolyPoly_asm(value, module);
-
-    hash_sum_time += difftime(clock(), start) / CLOCKS_PER_SEC;
-
-    return hash;
 }
 
 void skipUselessSymbols(char** string)
@@ -229,16 +218,16 @@ void Test(const char* filename)
     {
         for (size_t i = 0; i < test_data->size; ++i)
         {   
-            size_t idx = rand() % test_data->size;
+            // size_t idx = rand() % test_data->size;
             
-            double start = clock();
+            // double start = clock();
 
             elem_t* tmp = findHashTable(dict.table, &test_data->data[i]);
 
-            sum_time += difftime(clock(), start) / CLOCKS_PER_SEC;
+            // sum_time += difftime(clock(), start) / CLOCKS_PER_SEC;
         }
     }
-    printf("Test time: %lg\n", sum_time);
+    // printf("Test time: %lg\n", sum_time);
 
     test_data = deleteArray(test_data);
     destructDictionary(&dict);

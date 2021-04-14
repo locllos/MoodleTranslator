@@ -1,5 +1,11 @@
 #include "hashTable.h"
 #include "../Tool/Tools.h"
+#include "stdio.h"
+#include "time.h"
+#include <unistd.h>
+
+
+extern "C" size_t HolyPoly_asm(char* value, size_t module);
 
 #define dbg 
 
@@ -55,6 +61,42 @@ void pushHashTable(HashTable* table, elem_t value)
 
 elem_t* findHashTable(HashTable* table, elem_t* element)
 {   
+    size_t hash = HolyPoly_asm(element->key, table->size);
+
+    if (element->xmm_using == 0)
+    {
+        element->fast_key = getFastKey(element->key);
+        element->xmm_using = 1;
+    }
+    int size = table->buckets[hash].size;
+    elem_t* data = table->buckets[hash].data;
+    elem_t* catched_element = nullptr;
+
+    __asm__(".myForLoop:"
+            "testq %%rcx, %%rcx\n"
+            "je .returnValue\n"
+            "decq %%rcx\n"
+            :
+            :"c"(size)
+            :);
+    {
+        size_t i = 0;
+        if ((_mm256_movemask_epi8(
+            _mm256_cmpeq_epi8(data[i].fast_key, element->fast_key)) != 0))
+        {
+            catched_element = data + i;
+            __asm__("jmp .returnValue\n");
+        }
+        ++i;
+    }
+    __asm__("jmp .myForLoop\n");
+    __asm__(".returnValue:\n");
+
+    return catched_element;
+}
+
+elem_t* findHashTable_(HashTable* table, elem_t* element)
+{
     size_t hash = table->getHash(element->key, table->size);
 
     if (element->xmm_using == 0)
@@ -62,11 +104,19 @@ elem_t* findHashTable(HashTable* table, elem_t* element)
         element->fast_key = getFastKey(element->key);
         element->xmm_using = 1;
     }
-    int idx = findArray(&table->buckets[hash], element);
+    int size = table->buckets[hash].size;
+    elem_t* data = table->buckets[hash].data;
+    elem_t* catched_value = nullptr;
 
-    if (idx != -1) return &table->buckets[hash].data[idx];
-
-    return nullptr;
+    for (int i = 0; i < size; ++i)
+    {
+        if ((_mm256_movemask_epi8(_mm256_cmpeq_epi8(data[i].fast_key, element->fast_key)) != 0))
+        {
+            catched_value = data + i;
+            // break;
+        }
+    }
+    return catched_value;
 }
 
 HashTable* newHashTable(size_t size, 
